@@ -1,0 +1,88 @@
+---
+
+---
+
+<style>
+  body {
+    background-color: white;
+    height: 100dvh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .titulo {
+    position: absolute;
+    font-size: 30vmin;
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    letter-spacing: -30px;
+  }
+
+  .image {
+    width: 25vmin;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .image[data-status="inactive"] {
+    display: none;
+  }
+  .image[data-status="active"] {
+    display: block;
+  }
+</style>
+
+<body>
+  <p class="titulo">Paula</p>
+  <img class="image" data-index="0" data-status="inactive" src="fotos/1.jpeg" />
+  <img class="image" data-index="1" data-status="inactive" src="fotos/2.jpeg" />
+  <img class="image" data-index="2" data-status="inactive" src="fotos/3.jpeg" />
+  <img class="image" data-index="3" data-status="inactive" src="fotos/4.jpeg" />
+  <img class="image" data-index="4" data-status="inactive" src="fotos/5.jpeg" />
+  <img class="image" data-index="5" data-status="inactive" src="fotos/6.jpeg" />
+  <img class="image" data-index="6" data-status="inactive" src="fotos/7.jpeg" />
+  <img class="image" data-index="7" data-status="inactive" src="fotos/8.jpeg" />
+  <img class="image" data-index="8" data-status="inactive" src="fotos/9.jpeg" />
+  <imgc lass="image" data-index="9" data-status="inactive" src="fotos/10.jpeg"
+  ></imgc>
+</body>
+
+<script>
+  const images = document.getElementsByClassName("image");
+
+  let globalIndex = 0;
+  let last = { x: 0, y: 0 };
+
+  const activate = (image: any, x: any, y: any) => {
+    image.style.left = `${x}px`;
+    image.style.top = `${y}px`;
+    image.style.zIndex = globalIndex;
+
+    image.dataset.status = "active";
+
+    last = { x, y };
+  };
+
+  const distanceFromLast = (x: number, y: number) => {
+    return Math.hypot(x - last.x, y - last.y);
+  };
+
+  const handleOnMove = (e: MouseEvent | Touch) => {
+    if (distanceFromLast(e.clientX, e.clientY) > window.innerWidth / 10) {
+      const lead = images[globalIndex % images.length],
+        tail = images[(globalIndex - 5) % images.length];
+
+      activate(lead, e.clientX, e.clientY);
+
+      if (tail) (tail as HTMLElement).dataset.status = "inactive";
+
+      globalIndex++;
+    }
+  };
+
+  window.onmousemove = (e) => handleOnMove(e);
+  window.ontouchmove = (e) => handleOnMove(e.touches[0]);
+</script>
