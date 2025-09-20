@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "Wedges";
+  src: url("/fonts/wedges/Wedges.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.portada {
+  height: 100dvh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  font-weight: bold;
+}
+
+.header p {
+  color: white;
+  margin: 10px;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.titulo {
+  position: absolute;
+  font-size: 30vmin;
+  font-family: "Wedges", sans-serif;
+  color: white;
+  letter-spacing: -30px;
+  justify-self: center;
+}
+
+.image {
+  width: 20vmin;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-out;
+}
+
+.image.inactive {
+  display: none;
+}
+
+.image.active {
+  display: block;
+  opacity: 1;
+}
+
+.image.fading {
+  display: block;
+  opacity: 0;
+}
+
+.portadaVertical {
+  margin: 35px 10px 10px 10px;
+}
+
+.titulo-vertical {
+  font-size: 30vmin;
+  font-family: "Wedges", sans-serif;
+  color: white;
+  letter-spacing: -20px;
+  margin: 0;
+  padding: 0;
+  line-height: 0.9;
+}
+

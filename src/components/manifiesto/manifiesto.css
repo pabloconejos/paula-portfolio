@@ -1,0 +1,161 @@
+.manifiesto {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  /* padding: 40px; quitamos padding para que el overlay cubra todo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 20px; quitamos padding */
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.img-overlay img {
+  position: absolute;
+  transition: transform 0.2s ease-out;
+  pointer-events: none;
+}
+
+.img-mac {
+  top: 17%;
+  left: 7%;
+  height: 330px;
+}
+.img-chicles {
+  bottom: 25%;
+  left: 16%;
+  height: 160px;
+}
+.img-gafas {
+  bottom: 15%;
+  left: 40%;
+  height: 180px;
+}
+.img-cacao {
+  top: 22%;
+  left: 32%;
+  height: 120px;
+}
+.img-headphones {
+  top: 25%;
+  right: 17%;
+  height: 250px;
+  z-index: 1;
+}
+.img-lapices {
+  top: 30%;
+  left: 45%;
+  height: 300px;
+}
+.img-matcha {
+  bottom: 30%;
+  left: 55%;
+  height: 150px;
+}
+.img-papel {
+  bottom: 33%;
+  left: 40%;
+  height: 120px;
+}
+.img-posits {
+  top: 16%;
+  right: 35%;
+  height: 300px;
+}
+.img-papeles {
+  top: 25%;
+  right: 15%;
+  height: 200px;
+}
+.img-libreta {
+  bottom: 25%;
+  left: 30%;
+  height: 200px;
+}
+.img-walpaperIphone {
+  bottom: 24%;
+  right: 24%;
+  height: 200px;
+  border-radius: 10px;
+  border: solid 2px black;
+}
+
+.txt {
+  z-index: 1;
+  position: relative;
+  color: white;
+  font-size: 80px;
+  line-height: 0.8;
+  text-align: start;
+  max-width: 900px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  align-self: center;
+}
+
+.txt span {
+  font-weight: bold;
+}
+
+.manifiesto-vertical {
+  margin: 10px;
+}
+
+.txt-vertical {
+  color: white;
+  font-size: 8vmin;
+  line-height: 0.8;
+  text-align: start;
+  max-width: 900px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1200px) {
+  .img-mac { height: 250px; }
+  .img-headphones { height: 190px; }
+  .img-lapices { height: 230px; }
+  .img-posits { height: 230px; }
+  .img-papeles { height: 150px; }
+  .img-libreta { height: 150px; }
+  .img-walpaperIphone { height: 150px; }
+  .img-chicles { height: 120px; }
+  .img-gafas { height: 135px; }
+  .img-matcha { height: 110px; }
+  .img-cacao { height: 90px; }
+  .img-papel { height: 90px; }
+}
+
+/* Móviles y pantallas pequeñas */
+@media (max-width: 768px) {
+  .img-mac { height: 180px; }
+  .img-headphones { height: 140px; }
+  .img-lapices { height: 170px; }
+  .img-posits { height: 170px; }
+  .img-papeles { height: 110px; }
+  .img-libreta { height: 110px; }
+  .img-walpaperIphone { height: 110px; }
+  .img-chicles { height: 90px; }
+  .img-gafas { height: 100px; }
+  .img-matcha { height: 80px; }
+  .img-cacao { height: 70px; }
+  .img-papel { height: 70px; }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 480px) {
+  .img-overlay {
+    display: none; /* Ocultar imágenes en pantallas muy pequeñas */
+  }
+}
