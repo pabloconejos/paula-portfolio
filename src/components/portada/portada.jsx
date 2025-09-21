@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './portada.css';
+import React, { useEffect, useRef, useState } from "react";
+import "./portada.css";
 
 const PaulaPortfolio = () => {
   const imagesRef = useRef([]);
@@ -20,11 +20,11 @@ const PaulaPortfolio = () => {
     "fotos/portada/7.jpeg",
     "fotos/portada/8.jpeg",
     "fotos/portada/9.jpeg",
-    "fotos/portada/10.jpeg"
+    "fotos/portada/10.jpeg",
   ];
 
   const [imageStatuses, setImageStatuses] = useState(
-    imageSources.map(() => 'inactive')
+    imageSources.map(() => "inactive")
   );
 
   const activate = (imageIndex, x, y) => {
@@ -35,9 +35,9 @@ const PaulaPortfolio = () => {
     image.style.top = `${y}px`;
     image.style.zIndex = globalIndexRef.current.toString();
 
-    setImageStatuses(prev => {
+    setImageStatuses((prev) => {
       const newStatuses = [...prev];
-      newStatuses[imageIndex] = 'active';
+      newStatuses[imageIndex] = "active";
       return newStatuses;
     });
 
@@ -72,17 +72,17 @@ const PaulaPortfolio = () => {
       const imageIndex = oldestImage.index;
 
       // Start fade out
-      setImageStatuses(prev => {
+      setImageStatuses((prev) => {
         const newStatuses = [...prev];
-        newStatuses[imageIndex] = 'fading';
+        newStatuses[imageIndex] = "fading";
         return newStatuses;
       });
 
       // After transition, hide completely
       setTimeout(() => {
-        setImageStatuses(prev => {
+        setImageStatuses((prev) => {
           const newStatuses = [...prev];
-          newStatuses[imageIndex] = 'inactive';
+          newStatuses[imageIndex] = "inactive";
           return newStatuses;
         });
         // Continue with next image
@@ -117,9 +117,9 @@ const PaulaPortfolio = () => {
       activate(leadIndex, currentX, currentY);
 
       if (tailIndex >= 0 && globalIndexRef.current >= 5) {
-        setImageStatuses(prev => {
+        setImageStatuses((prev) => {
           const newStatuses = [...prev];
-          newStatuses[tailIndex] = 'inactive';
+          newStatuses[tailIndex] = "inactive";
           return newStatuses;
         });
 
@@ -147,15 +147,15 @@ const PaulaPortfolio = () => {
     const handleMouseMove = (e) => handleOnMove(e);
     const handleTouchMove = (e) => handleOnMove(e.touches[0]);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
-      
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+
       if (fadeTimeoutRef.current) {
         clearTimeout(fadeTimeoutRef.current);
       }
@@ -164,19 +164,21 @@ const PaulaPortfolio = () => {
 
   return (
     <div className="portada">
-
       <header className="header">
         <p>Paula</p>
         <p>Alberola</p>
         <p>Zaragozá</p>
       </header>
 
-      <p className="titulo">Paula</p>
+      <div className="titulo-container">
+        <p className="titulo">Paula</p>
+        <p className="resgistrada">®</p>
+      </div>
 
       {imageSources.map((src, index) => (
         <img
           key={index}
-          ref={el => imagesRef.current[index] = el}
+          ref={(el) => (imagesRef.current[index] = el)}
           className={`image ${imageStatuses[index]}`}
           src={src}
           alt={`Portfolio image ${index + 1}`}

@@ -92,7 +92,7 @@
 .txt {
   z-index: 1;
   position: relative;
-  color: white;
+  color: red;
   font-size: 80px;
   line-height: 0.8;
   text-align: start;
@@ -111,7 +111,7 @@
 }
 
 .txt-vertical {
-  color: white;
+  color: red;
   font-size: 8vmin;
   line-height: 0.8;
   text-align: start;

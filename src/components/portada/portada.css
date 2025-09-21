@@ -1,6 +1,7 @@
 @font-face {
-  font-family: "Wedges";
-  src: url("/fonts/wedges/Wedges.ttf") format("truetype");
+  font-family: "BricolageGrotesque";
+  src: url("/fonts/BricolageGrotesque-Light.ttf")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -27,19 +28,38 @@
 }
 
 .header p {
-  color: white;
+  color: red;
   margin: 10px;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.titulo-container {
+  position: relative;
+  color: red;
+  display: flex;
+}
+
 .titulo {
-  position: absolute;
+  font-family: "BricolageGrotesque", sans-serif;
   font-size: 30vmin;
-  font-family: "Wedges", sans-serif;
-  color: white;
-  letter-spacing: -30px;
+  letter-spacing: -10px;
   justify-self: center;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.resgistrada {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 8vmin;
+  justify-self: center;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 65px;
+  right: -60px;
 }
 
 .image {
@@ -70,10 +90,9 @@
 .titulo-vertical {
   font-size: 30vmin;
   font-family: "Wedges", sans-serif;
-  color: white;
+  color: red;
   letter-spacing: -20px;
   margin: 0;
   padding: 0;
   line-height: 0.9;
 }
-
