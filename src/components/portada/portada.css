@@ -1,6 +1,6 @@
 @font-face {
   font-family: "BricolageGrotesque";
-  src: url("/fonts/BricolageGrotesque-Light.ttf")
+  src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf")
     format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -48,6 +48,7 @@
   font-weight: bold;
   margin: 0;
   padding: 0;
+  color: red;
 }
 
 .resgistrada {

@@ -1,13 +1,16 @@
 ---
+import Manifiesto from "../components/manifiesto/manifiesto";
+import PortadaSwitcher from "../components/portada/PortadaSwitcher";
+import Layout from "../layouts/Layout.astro";
+import Proyectos from "../components/proyectos.astro";
+
 // src/pages/index.astro
 // import Manifiesto from "../components/manifiesto.astro";
-import Manifiesto from "../components/manifiesto/manifiestoSwitcher.jsx";
-import PortadaSwitcher from "../components/portada/PortadaSwitcher.jsx";
-import Layout from "../layouts/Layout.astro";
+
 ---
 
 <Layout>
   <PortadaSwitcher client:only="react" />
   <Manifiesto client:only="react" />
-  <!-- <Manifiesto /> -->
+  <Proyectos />
 </Layout>

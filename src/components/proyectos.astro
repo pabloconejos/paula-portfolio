@@ -1,0 +1,123 @@
+---
+const proyects = [
+  {
+    title: "Proyecto 1",
+    description: "Descripción del proyecto 1",
+    imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
+    link: "fotos/portada/1.jpeg",
+  },
+  {
+    title: "Proyecto 2",
+    description: "Descripción del proyecto 2",
+    imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
+    link: "fotos/portada/2.jpeg",
+  },
+  {
+    title: "Proyecto 3",
+    description: "Descripción del proyecto 3",
+    imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
+    link: "fotos/portada/3.jpeg",
+  },
+    {
+    title: "Proyecto 4",
+    description: "Descripción del proyecto 3",
+    imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
+    link: "fotos/portada/3.jpeg",
+  },
+    {
+    title: "Proyecto 5",
+    description: "Descripción del proyecto 3",
+    imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
+    link: "fotos/portada/3.jpeg",
+  },
+    {
+    title: "Proyecto 6",
+    description: "Descripción del proyecto 3",
+    imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
+    link: "fotos/portada/3.jpeg",
+  },
+];
+---
+
+<style>
+  @font-face {
+    font-family: "BricolageGrotesque";
+    src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .proyectos {
+    padding: 2rem;
+    background-color: red;
+  }
+
+  .proyectos h2 {
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: white;
+    letter-spacing: -3px;
+    font-weight: bold;
+  }
+
+  .proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .proyecto-card {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .proyecto-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.8); /* fondo semitransparente */
+  transition: opacity 0.3s ease; /* animación suave */
+}
+
+.proyecto-card:hover .overlay {
+  opacity: 1; /* aparece al hacer hover */
+}
+
+.overlay p {
+  font-family: "BricolageGrotesque", sans-serif;
+  font-size: 1.8rem;
+  color: white;
+  letter-spacing: -1px;
+  font-weight: bold;
+  margin: 11px;
+}
+
+</style>
+
+<section class="proyectos">
+  <h2>Proyectos</h2>
+  <div class="proyectos-grid">
+    {
+      proyects.map((proyecto) => (
+        <article class="proyecto-card">
+          <img src={proyecto.imageUrl} alt={`Imagen de ${proyecto.title}`} />
+          <div class="overlay">
+              <p>{proyecto.title}</p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
