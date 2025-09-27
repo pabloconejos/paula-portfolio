@@ -154,7 +154,7 @@
 }
 
 /* Móviles muy pequeños */
-@media (max-width: 480px) {
+@media (max-width: 860px) {
   .img-overlay {
     display: none; /* Ocultar imágenes en pantallas muy pequeñas */
   }

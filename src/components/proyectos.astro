@@ -18,19 +18,19 @@ const proyects = [
     imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
     link: "fotos/portada/3.jpeg",
   },
-    {
+  {
     title: "Proyecto 4",
     description: "Descripción del proyecto 3",
     imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
     link: "fotos/portada/3.jpeg",
   },
-    {
+  {
     title: "Proyecto 5",
     description: "Descripción del proyecto 3",
     imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
     link: "fotos/portada/3.jpeg",
   },
-    {
+  {
     title: "Proyecto 6",
     description: "Descripción del proyecto 3",
     imageUrl: "fotos/proyectos/proyectos_foto_prueba.jpeg",
@@ -40,91 +40,119 @@ const proyects = [
 ---
 
 <style>
+  /* =========== Base / tokens =========== */
+  :root{
+    --gap: 1rem;
+    --radius: 10px;
+    --brand: #ff1a1a; /* rojo */
+    --text: #111;
+    --bg: #fff;
+  }
+
   @font-face {
     font-family: "BricolageGrotesque";
     src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf") format("truetype");
-    font-weight: normal;
+    font-weight: 700;
     font-style: normal;
+    font-display: swap;
   }
 
+  /* Preferencias de usuario */
+  @media (prefers-reduced-motion: reduce){
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* =========== Layout =========== */
   .proyectos {
-    padding: 0 2rem;
-    background-color: white;
+    padding: clamp(1rem, 2.5vw, 2rem);
+    background-color: var(--bg);
+    color: var(--text);
+    margin-inline: auto;
   }
 
   .proyectos h2 {
-    font-family: "BricolageGrotesque", sans-serif;
-    font-size: 6rem;
-    margin: 0 0 1rem 0;
-    color: red;
-    letter-spacing: -3px;
-    font-weight: bold;
+    font-family: "BricolageGrotesque", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-size: clamp(2rem, 6vw, 6rem);
+    line-height: 1;
+    margin: 0 0 .75rem 0;
+    color: var(--brand);
+    letter-spacing: clamp(-1px, -0.5vw, -3px);
+    font-weight: 800;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
   }
+  .proyectos h2.visible { opacity: 1; transform: translateY(0); }
 
-  .proyectos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
+  /* Grid responsive con auto-fit: llena filas según espacio */
+.proyectos-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;           /* móvil: 1 columna */
+}
 
+@media (min-width: 640px) {              /* tablet */
+  .proyectos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {             /* ordenador */
+  .proyectos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+  /* =========== Card =========== */
   .proyecto-card {
+    position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    position: relative;
+    border-radius: 5px;
+    isolation: isolate; /* asegura overlay por encima */
+    outline: none;
   }
-
   .proyecto-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
-    border-radius: 5px;
+    object-fit: cover;
+    border-radius: inherit;
+    /* mejora LCP en pantallas grandes */
+    content-visibility: auto;
   }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 0, 0, 0.8); /* fondo semitransparente */
-  transition: opacity 0.3s ease; /* animación suave */
-  border-radius: 5px;
-}
+  /* Overlay */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: color-mix(in srgb, var(--brand) 80%, transparent);
+    transition: opacity .25s ease;
+    border-radius: inherit;
+    display: grid;
+    place-items: start;
+  }
+  .proyecto-card:hover .overlay,
+  .proyecto-card:focus-visible .overlay {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .overlay p {
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.8rem);
+    color: white;
+    letter-spacing: -0.5px;
+    font-weight: 800;
+    margin: 12px;
+  }
 
-.proyecto-card:hover .overlay {
-  opacity: 1; /* aparece al hacer hover */
-  cursptor: pointer;
-}
-
-.overlay p {
-  font-family: "BricolageGrotesque", sans-serif;
-  font-size: 1.8rem;
-  color: white;
-  letter-spacing: -1px;
-  font-weight: bold;
-  margin: 11px;
-}
-
-.proyectos h2 {
-  font-family: "BricolageGrotesque", sans-serif;
-  font-size: 6rem;
-  margin: 0 0 1rem 0;
-  color: red;
-  letter-spacing: -3px;
-  font-weight: bold;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.proyectos h2.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
+  /* =========== Media queries finas (opcional) =========== */
+  /* Tablets: aumenta el gap */
+  @media (min-width: 640px){
+    :root { --gap: 1.1rem; }
+  }
+  /* Desktop: más aire */
+  @media (min-width: 1024px){
+    :root { --gap: 1.25rem; }
+  }
 </style>
 
 <section class="proyectos">
@@ -132,10 +160,16 @@ const proyects = [
   <div class="proyectos-grid">
     {
       proyects.map((proyecto) => (
-        <article class="proyecto-card">
-          <img src={proyecto.imageUrl} alt={`Imagen de ${proyecto.title}`} />
+        <article class="proyecto-card" tabindex="0">
+          <img
+            src={proyecto.imageUrl}
+            alt={`Imagen de ${proyecto.title}`}
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
           <div class="overlay">
-              <p>{proyecto.title}</p>
+            <p>{proyecto.title}</p>
           </div>
         </article>
       ))
@@ -143,25 +177,22 @@ const proyects = [
   </div>
 </section>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const h2 = document.querySelector(".proyectos h2");
+    if (!h2) return;
 
-    if (h2) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              h2.classList.add("visible");
-              observer.unobserve(h2); // opcional: solo una vez
-            }
-          });
-        },
-        { threshold: 0.3 } // activa cuando un 30% del elemento esté visible
-      );
-
-      observer.observe(h2);
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            h2.classList.add("visible");
+            observer.unobserve(h2);
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(h2);
   });
 </script>

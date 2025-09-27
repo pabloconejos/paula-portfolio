@@ -164,11 +164,7 @@ const PaulaPortfolio = () => {
 
   return (
     <div className="portada">
-      <header className="header">
-        <p>CV</p>
-        <p>SOBRE MÍ</p>
-        <p>CONTACTO</p>
-      </header>
+
 
       <div className="titulo-container">
         <p className="titulo">Paula</p>

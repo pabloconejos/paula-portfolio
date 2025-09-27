@@ -6,6 +6,10 @@
   font-style: normal;
 }
 
+:root {
+  --gap-to-top: 60px;
+}
+
 .portada {
   height: 100dvh;
   width: 100vw;
@@ -14,34 +18,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  font-weight: bold;
-}
-
-.header p {
-  color: red;
-  margin: 25px;
-  padding: 0;
-  font-size: 2.5vmin;
-  font-family: Arial, Helvetica, sans-serif;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.3s ease forwards;
+  margin-top: var(--gap-to-top);
 }
 
 .titulo-container {
   position: relative;
   color: red;
   display: flex;
+  margin-bottom: var(--gap-to-top);
 }
 
 .titulo {
