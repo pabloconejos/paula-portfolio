@@ -51,9 +51,224 @@
   }
 }
 
+/* CONTENEDOR DEL COLLAGE */
+.image-snake{
+  position: absolute;
+  width: 100%;
+  height: 100vh;          /* ocupa toda la ventana */
+  overflow: hidden;
+}
+
+/* ESTILO GENERAL DE CADA FOTO */
+.image-snake img{
+  position: absolute;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* HOVER LIGERO */
+.image-snake img:hover{
+  z-index: 10;
+  transform: scale(1.03) rotate(var(--rot, 0deg));
+  box-shadow: 0 18px 36px rgba(0,0,0,.35);
+}
+
+/* POSICIONES Y ROTACIONES (aprox. como en la foto) */
+
+/* 1: jarrones pequeños arriba-izquierda (pequeña y vertical) */
+.image-snake img:nth-child(1){
+  width: 15vw; height: 24vw;  /* vertical */
+  top: 6%; left: 4%;
+  --rot: 12deg; transform: rotate(var(--rot));
+}
+
+/* 2: interior grande centro-izquierda (la más grande) */
+.image-snake img:nth-child(2){
+  width: 42vw; height: 28vw;
+  top: 11%; left: 17%;
+  --rot: -14deg; transform: rotate(var(--rot));
+}
+
+/* 3: bordados en mesa (delante de la 2) */
+.image-snake img:nth-child(3){
+  width: 34vw; height: 22vw;
+  top: 40%; left: 28%;
+  --rot: 19deg; transform: rotate(var(--rot));
+  z-index: 2;
+}
+
+/* 4: gente brindando (derecha-centro) */
+.image-snake img:nth-child(4){
+  width: 30vw; height: 20vw;
+  top: 38%; left: 56%;
+  --rot: -15deg; transform: rotate(var(--rot));
+}
+
+/* 5: hoja grande (abajo-derecha, delante de la 4) */
+.image-snake img:nth-child(5){
+  width: 28vw; height: 20vw;
+  top: 58%; left: 66%;
+  --rot: 9deg; transform: rotate(var(--rot));
+  z-index: 3;
+}
+
+/* 6: mesa con café (extremo derecho) */
+.image-snake img:nth-child(6){
+  width: 28vw; height: 20vw;
+  top: 54%; right: 0%;
+  --rot: -17deg; transform: rotate(var(--rot));
+}
+
+/* 7: (opcional) una imagen pequeña extra arriba-izquierda */
+.image-snake img:nth-child(7){
+  width: 16vw; height: 12vw;
+  top: 2%; left: 8%;
+  --rot: -8deg; transform: rotate(var(--rot));
+}
+
+/* 8: (opcional) pequeño recorte encima del centro */
+.image-snake img:nth-child(8){
+  width: 18vw; height: 12vw;
+  top: 26%; left: 45%;
+  --rot: 6deg; transform: rotate(var(--rot));
+}
+
+/* 9: (opcional) pequeño recorte arriba-derecha */
+.image-snake img:nth-child(9){
+  width: 16vw; height: 12vw;
+  top: 10%; right: 6%;
+  --rot: -6deg; transform: rotate(var(--rot));
+}
+
+/* RESPONSIVE: en móviles apilamos con menos solape */
+@media (max-width: 900px){
+  .image-snake{ height: 140vh; }
+  .image-snake img{ width: 42vw !important; height: 30vw !important; }
+  .image-snake img:nth-child(1){ top: 4%; left: 6%; }
+  .image-snake img:nth-child(2){ top: 18%; left: 8%; }
+  .image-snake img:nth-child(3){ top: 36%; left: 46%; }
+  .image-snake img:nth-child(4){ top: 54%; left: 8%; }
+  .image-snake img:nth-child(5){ top: 72%; left: 46%; }
+  .image-snake img:nth-child(6){ top: 90%; left: 8%; }
+  .image-snake img:nth-child(7){ top: 8%;  left: 56%; }
+  .image-snake img:nth-child(8){ top: 28%; left: 56%; }
+  .image-snake img:nth-child(9){ top: 46%; left: 8%; }
+}
+
+/* Estado base: ocultas y un pelín desplazadas */
+.image-snake img{
+  opacity: 0;
+  transform: rotate(var(--rot, 0deg)) translateY(12px);
+  transition: opacity .48s ease, transform .48s ease;
+  will-change: opacity, transform;
+}
+
+/* Cuando toquen: visibles y en su sitio */
+.image-snake img.is-visible{
+  opacity: 1;
+  transform: rotate(var(--rot, 0deg)) translateY(0);
+}
+
+/* Si alguien usa “reducir movimiento”, quita animación */
+@media (prefers-reduced-motion: reduce){
+  .image-snake img{ transition: none; }
+}
+
+
 </style>
 
-<section class="sobre-mi-portada">
+<script>
+(function(){
+  let running = false;
+
+  function runSnakeOnce(){
+    if (running) return;
+    const section = document.querySelector('.sobre-mi-portada');
+    const imgs = Array.from(document.querySelectorAll('.image-snake img'));
+    if (!section || !imgs.length) return;
+
+    running = true;
+
+    // Reinicio
+    imgs.forEach(el => el.classList.remove('is-visible'));
+
+    // --- AJUSTES ---
+    const WINDOW = 3;     // cuántas visibles a la vez
+    const STEP_MS = 250;  // ritmo (que no sea menor que tu transición CSS visual)
+    // const FADE_MS = 480; // (tu CSS usa .48s; si quieres, usa STEP_MS >= FADE_MS)
+
+    let next = 0;
+    const queue: number[] = [];
+    const show = (i: number) => imgs[i]?.classList.add('is-visible');
+    const hide = (i: string | number) => imgs[Number(i)]?.classList.remove('is-visible');
+
+    function tick(){
+      if (next < imgs.length){
+        if (queue.length < WINDOW){
+          show(next);
+          queue.push(next);
+          next++;
+        } else {
+          const oldest = queue.shift();
+          if (oldest != null) hide(oldest);
+          show(next);
+          queue.push(next);
+          next++;
+        }
+        setTimeout(tick, STEP_MS);
+      } else if (queue.length){
+        const oldest = queue.shift();
+        if (oldest != null) hide(oldest);
+        setTimeout(tick, STEP_MS);
+      }
+      // cuando queue llegue a 0, termina solo (sin bucle)
+    }
+
+    // Arranca tras el “salto” al ancla y el primer layout
+    requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(tick, 100)));
+  }
+
+  function startIfNeeded(){
+    const section = document.querySelector('.sobre-mi-portada');
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const inView = rect.top < vh * 0.7 && rect.bottom > vh * 0.3;
+    if (inView || window.location.hash === '#sobre-mi-portada'){
+      runSnakeOnce();
+    }
+  }
+
+  // 1) Carga y restauración desde caché de historial (BFCache)
+  window.addEventListener('load', startIfNeeded);
+  window.addEventListener('pageshow', startIfNeeded);
+
+  // 2) Navegación con ancla
+  window.addEventListener('hashchange', () => {
+    // deja que el navegador haga el scroll al ancla primero
+    setTimeout(startIfNeeded, 50);
+  });
+
+  // 3) Chequeo extra al tener el DOM listo
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(startIfNeeded, 0);
+  });
+
+  // 4) Fallback si entras por scroll
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) runSnakeOnce();
+    }, { threshold: 0.3 });
+    const section = document.querySelector('.sobre-mi-portada');
+    if (section) io.observe(section);
+  }
+})();
+</script>
+
+
+<section id="sobre-mi-portada" class="sobre-mi-portada">
   <img src="fotos/sobremi/sobremi_metro_londres.webp" alt="" />
   <div class="textos">
     <p>
@@ -67,4 +282,20 @@
       todo un poco.
     </p>
   </div>
+
+  <div class="image-snake">
+    <img src="fotos/portada/1.jpeg" alt="">
+    <img src="fotos/portada/2.jpeg" alt="">
+    <img src="fotos/portada/3.jpeg" alt="">
+    <img src="fotos/portada/4.jpeg" alt="">
+    <img src="fotos/portada/5.jpeg" alt="">
+  </div>
+
+
 </section>
+
+
+
+
+
+
