@@ -165,9 +165,9 @@ const PaulaPortfolio = () => {
   return (
     <div className="portada">
       <header className="header">
-        <p>Paula</p>
-        <p>Alberola</p>
-        <p>Zaragozá</p>
+        <p>CV</p>
+        <p>SOBRE MÍ</p>
+        <p>CONTACTO</p>
       </header>
 
       <div className="titulo-container">

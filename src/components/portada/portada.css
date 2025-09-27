@@ -29,9 +29,13 @@
 
 .header p {
   color: red;
-  margin: 10px;
+  margin: 25px;
   padding: 0;
+  font-size: 2.5vmin;
   font-family: Arial, Helvetica, sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.3s ease forwards;
 }
 
 .titulo-container {
@@ -42,7 +46,7 @@
 
 .titulo {
   font-family: "BricolageGrotesque", sans-serif;
-  font-size: 30vmin;
+  font-size: 35vmin;
   letter-spacing: -10px;
   justify-self: center;
   font-weight: bold;
@@ -96,4 +100,42 @@
   margin: 0;
   padding: 0;
   line-height: 0.9;
+}
+
+.portada {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.header p:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.header p:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.header p:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.titulo-container {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 1s;
+}
+
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -48,15 +48,15 @@ const proyects = [
   }
 
   .proyectos {
-    padding: 2rem;
-    background-color: red;
+    padding: 0 2rem;
+    background-color: white;
   }
 
   .proyectos h2 {
     font-family: "BricolageGrotesque", sans-serif;
     font-size: 6rem;
-    margin-bottom: 1rem;
-    color: white;
+    margin: 0 0 1rem 0;
+    color: red;
     letter-spacing: -3px;
     font-weight: bold;
   }
@@ -78,6 +78,7 @@ const proyects = [
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 5px;
   }
 
 .overlay {
@@ -89,10 +90,12 @@ const proyects = [
   height: 100%;
   background: rgba(255, 0, 0, 0.8); /* fondo semitransparente */
   transition: opacity 0.3s ease; /* animación suave */
+  border-radius: 5px;
 }
 
 .proyecto-card:hover .overlay {
   opacity: 1; /* aparece al hacer hover */
+  cursptor: pointer;
 }
 
 .overlay p {
@@ -103,6 +106,24 @@ const proyects = [
   font-weight: bold;
   margin: 11px;
 }
+
+.proyectos h2 {
+  font-family: "BricolageGrotesque", sans-serif;
+  font-size: 6rem;
+  margin: 0 0 1rem 0;
+  color: red;
+  letter-spacing: -3px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.proyectos h2.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 </style>
 
@@ -121,3 +142,26 @@ const proyects = [
     }
   </div>
 </section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const h2 = document.querySelector(".proyectos h2");
+
+    if (h2) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              h2.classList.add("visible");
+              observer.unobserve(h2); // opcional: solo una vez
+            }
+          });
+        },
+        { threshold: 0.3 } // activa cuando un 30% del elemento esté visible
+      );
+
+      observer.observe(h2);
+    }
+  });
+</script>
