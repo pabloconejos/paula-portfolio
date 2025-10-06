@@ -1,0 +1,195 @@
+---
+import { projects } from "../../data/proyects";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { id, title, images, video_concept, description, subTitulos } = project;
+
+const index = projects.findIndex((p) => p.id === id);
+const prevProject = projects[index - 1] ?? null;
+const nextProject = projects[index + 1] ?? null;
+---
+
+<style>
+  section {
+    max-width: 100dvw;
+    overflow: hidden;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .info {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-top: 100px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* position: absolute;
+    bottom: 0; */
+    z-index: 1000;
+    padding: 50px 30px 30px 30px;
+    box-sizing: border-box;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+  }
+
+  .previus,
+  .next {
+    font-weight: bold;
+  }
+
+  .info-section {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 150px;
+    width: 100%;
+  }
+
+  .titulo h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 60px;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .subtitle {
+    display: flex;
+    gap: 20px;
+  }
+
+  .descripcion p {
+    margin: 0;
+    padding: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .video-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  video {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+    @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<Layout>
+  <section>
+    <div class="info">
+      <div class="info-section">
+        <div class="titulo">
+          <h1>{title}</h1>
+          <!-- <div class="subtitle">
+          {subTitulos.map((sub) => <p>{sub}</p>)}
+        </div> -->
+        </div>
+        <div class="descripcion">
+          <p>{description}</p>
+        </div>
+      </div>
+
+      <div class="video-section">
+        <video controls poster={images[0]}>
+          <source src={video_concept} type="video/mp4" />
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+    </div>
+
+    <nav>
+      <span>
+        {
+          prevProject && (
+            <a class="previus" href={`/projects/${prevProject.id}`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-chevron-compact-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223"
+                />
+              </svg>{" "}
+              {prevProject.title}
+            </a>
+          )
+        }
+      </span>
+      <span>
+        {
+          nextProject && (
+            <a class="next" href={`/projects/${nextProject.id}`}>
+              {nextProject.title}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-chevron-compact-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671"
+                />
+              </svg>
+            </a>
+          )
+        }
+      </span>
+    </nav>
+  </section>
+</Layout>

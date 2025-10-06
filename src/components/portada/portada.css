@@ -6,9 +6,7 @@
   font-style: normal;
 }
 
-:root {
-  --gap-to-top: 60px;
-}
+
 
 .portada {
   height: 100dvh;
@@ -18,25 +16,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: var(--gap-to-top);
 }
 
 .titulo-container {
   position: relative;
   color: red;
   display: flex;
-  margin-bottom: var(--gap-to-top);
 }
 
 .titulo {
   font-family: "BricolageGrotesque", sans-serif;
-  font-size: 35vmin;
+  font-size: 40vmin;
   letter-spacing: -10px;
   justify-self: center;
   font-weight: bold;
   margin: 0;
   padding: 0;
   color: red;
+  /* margin-bottom: 220px; */
 }
 
 .resgistrada {
@@ -47,8 +44,8 @@
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 65px;
-  right: -60px;
+  top: 86px;
+  right: -37px;
 }
 
 .image {
@@ -89,24 +86,24 @@
 .portada {
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1s ease forwards;
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .header p:nth-child(1) {
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 .header p:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 0.2s;
 }
 .header p:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 0.3s;
 }
 
 .titulo-container {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 1s;
+  animation: fadeInUp 0.4s ease forwards;
+  animation-delay: 0.4s;
 }
 
 

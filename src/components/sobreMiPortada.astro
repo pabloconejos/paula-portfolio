@@ -17,7 +17,7 @@
     height: 100%;
     object-fit: cover; /* Ajusta la imagen para que cubra toda la pantalla */
     object-position: center; /* Centra la imagen */
-    mask-image: linear-gradient(black 85%, transparent); ;
+    mask-image: linear-gradient(black 50%, transparent); ;
   }
 
 .textos {
@@ -35,7 +35,8 @@
 
 .textos p {
   width: 25%;
-  font-size: 2vw;
+  font-size: 2.3vw;
+  letter-spacing: -2px;
 }
 
 /* --- RESPONSIVE --- */
@@ -177,6 +178,31 @@
   .image-snake img{ transition: none; }
 }
 
+/* Letras individuales */
+.textos p .char{
+  display: inline-block;
+  transform-origin: 50% 0%;
+  will-change: transform, opacity;
+}
+
+/* En hover del párrafo, que “caigan” las letras */
+.textos p.fall .char{
+  animation: drop var(--duration, 700ms) cubic-bezier(.2,.7,.2,1) var(--delay,0ms) both;
+}
+
+/* Animación de caída con ligera rotación */
+@keyframes drop{
+  to{
+    transform: translate3d(var(--dx, 0px), 110px, 0) rotateX(var(--rx, 0deg)) rotateZ(var(--rz, 0deg));
+    opacity: .85;
+  }
+}
+
+/* Respeta accesibilidad: si el usuario reduce movimiento, no animar */
+@media (prefers-reduced-motion: reduce){
+  .textos p.fall .char{ animation: none; }
+}
+
 
 </style>
 
@@ -197,7 +223,7 @@
 
     // --- AJUSTES ---
     const WINDOW = 3;     // cuántas visibles a la vez
-    const STEP_MS = 250;  // ritmo (que no sea menor que tu transición CSS visual)
+    const STEP_MS = 120;  // ritmo (que no sea menor que tu transición CSS visual)
     // const FADE_MS = 480; // (tu CSS usa .48s; si quieres, usa STEP_MS >= FADE_MS)
 
     let next = 0;
@@ -266,11 +292,13 @@
     if (section) io.observe(section);
   }
 })();
+
+
 </script>
 
 
 <section id="sobre-mi-portada" class="sobre-mi-portada">
-  <img class="background-img" src="fotos/sobremi/sobremi_metro_londres.webp" alt="" />
+  <img class="background-img" src="/fotos/sobremi/sobremi_metro_londres.webp" alt="" />
   <div class="textos">
     <p>
       Soy Paula, una creativa de 21 años impulsada por la curiosidad que intenta
@@ -284,13 +312,13 @@
     </p>
   </div>
 
-  <div class="image-snake">
+  <!-- <div class="image-snake">
     <img src="fotos/sobremi/1.jpg" alt="">
     <img src="fotos/sobremi/2.jpg" alt="">
     <img src="fotos/sobremi/3.jpg" alt="">
     <img src="fotos/sobremi/4.jpg" alt="">
     <img src="fotos/sobremi/5.jpg" alt="">
-  </div>
+  </div> -->
 
 
 </section>

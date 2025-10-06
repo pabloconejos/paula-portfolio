@@ -2,19 +2,15 @@
   position: relative;
   width: 100dvw;
   height: 100dvh;
-  /* padding: 40px; quitamos padding para que el overlay cubra todo */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 20px; quitamos padding */
 }
 
 .img-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   z-index: 2;
   pointer-events: auto;
 }
@@ -25,137 +21,118 @@
   pointer-events: none;
 }
 
-.img-mac {
-  top: 17%;
-  left: 7%;
-  height: 330px;
-}
-.img-chicles {
-  bottom: 25%;
-  left: 16%;
-  height: 160px;
-}
-.img-gafas {
-  bottom: 15%;
-  left: 40%;
-  height: 180px;
-}
-.img-cacao {
-  top: 22%;
-  left: 32%;
-  height: 120px;
-}
-.img-headphones {
-  top: 25%;
-  right: 17%;
-  height: 250px;
-  z-index: 1;
-}
-.img-lapices {
-  top: 30%;
-  left: 45%;
-  height: 300px;
-}
-.img-matcha {
-  bottom: 30%;
-  left: 55%;
-  height: 150px;
-}
-.img-papel {
-  bottom: 33%;
-  left: 40%;
-  height: 120px;
-}
-.img-posits {
-  top: 16%;
-  right: 35%;
-  height: 300px;
-}
-.img-papeles {
-  top: 25%;
-  right: 15%;
-  height: 200px;
-}
-.img-libreta {
-  bottom: 25%;
-  left: 30%;
-  height: 200px;
-}
-.img-walpaperIphone {
-  bottom: 24%;
-  right: 24%;
-  height: 200px;
-  border-radius: 10px;
-  border: solid 2px black;
-}
+/* ↓↓↓ Tamaños base más pequeños ↓↓↓ */
 
+
+/* Texto un poco más pequeño */
 .txt {
   z-index: 1;
   position: relative;
   color: red;
-  font-size: 80px;
+  font-size: 55px; /* antes 50px */
   line-height: 0.8;
-  text-align: start;
-  max-width: 900px;
+  text-align: center;
+  max-width: 900px;  /* antes 800px */
   font-family: Arial, Helvetica, sans-serif;
-  margin: 10px;
+  margin: 8px;
   align-self: center;
 }
+.txt span { font-weight: bold; }
 
-.txt span {
-  font-weight: bold;
-}
-
-.manifiesto-vertical {
-  margin: 10px;
-}
+.manifiesto-vertical { margin: 8px; }
 
 .txt-vertical {
   color: red;
-  font-size: 8vmin;
+  font-size: 6vmin;       /* antes 7vmin */
   line-height: 0.8;
   text-align: start;
-  max-width: 900px;
+  max-width: 700px;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
+/* ====== DESKTOP (Mac / pantallas grandes) ====== */
+.img-mac { top: 32%; left: 21%;  height: 185px; transform: rotate(-35deg); } /* OK */
+.img-chicles { bottom: 40%; left: 28%; height: 60px; }
+.img-gafas { bottom: 37%; left: 48%;  height: 90px; }
+.img-cacao { top: 54%; left: 40%;     height: 58px; }
+.img-headphones { top: 36%; right: 30%; height: 150px; z-index: 1; }
+.img-lapices { top: 38%; left: 40%;   height: 200px; }
+.img-matcha { bottom: 43%; left: 57%; height: 65px; }
+.img-papel { top: 40%; left: 46%;  height: 79px; }
+.img-posits { top: 33%; right: 40%;   height: 180px; }
+.img-papeles { top: 40%; right: 25%;  height: 120px; }
+.img-libreta { bottom: 35%; left: 35%; height: 120px; }
+.img-walpaperIphone {
+  bottom: 37%; 
+  right: 30%;
+  height: 100px;
+  border-radius: 10px;
+  border: solid 2px black;
+}
 
-/* Tablets y pantallas medianas */
+/* ====== <= 1200px (laptops/medianos) ====== */
 @media (max-width: 1200px) {
-  .img-mac { height: 250px; }
-  .img-headphones { height: 190px; }
-  .img-lapices { height: 230px; }
-  .img-posits { height: 230px; }
-  .img-papeles { height: 150px; }
-  .img-libreta { height: 150px; }
-  .img-walpaperIphone { height: 150px; }
-  .img-chicles { height: 120px; }
-  .img-gafas { height: 135px; }
-  .img-matcha { height: 110px; }
-  .img-cacao { height: 90px; }
-  .img-papel { height: 90px; }
+  .img-mac { top: 33%; left: 18%; height: 160px; }
+  .img-chicles { bottom: 41%; left: 26%; height: 52px; }
+  .img-gafas { bottom: 36%; left: 47%; height: 82px; }
+  .img-cacao { top: 37%; left: 44%; height: 52px; }
+  .img-headphones { top: 36%; right: 28%; height: 130px; }
+  .img-lapices { top: 39%; left: 41%; height: 175px; }
+  .img-matcha { bottom: 42%; left: 56%; height: 58px; }
+  .img-papel { top: 33%; left: 37%; height: 68px; }
+  .img-posits { top: 33%; right: 39%; height: 155px; }
+  .img-papeles { top: 40%; right: 23%; height: 105px; }
+  .img-libreta { bottom: 34%; left: 34%; height: 105px; }
+  .img-walpaperIphone { bottom: 30%; right: 29%; height: 105px; }
 }
 
-/* Móviles y pantallas pequeñas */
+/* ====== <= 992px (tablets landscape / notebooks pequeños) ====== */
+@media (max-width: 992px) {
+  .img-mac { top: 33%; left: 14%; height: 135px; }
+  .img-chicles { bottom: 42%; left: 23%; height: 46px; }
+  .img-gafas { bottom: 34%; left: 46%; height: 72px; }
+  .img-cacao { top: 37%; left: 42%; height: 46px; }
+  .img-headphones { top: 35%; right: 24%; height: 110px; }
+  .img-lapices { top: 39%; left: 40%; height: 150px; }
+  .img-matcha { bottom: 41%; left: 55%; height: 50px; }
+  .img-papel { top: 33%; left: 35%; height: 58px; }
+  .img-posits { top: 33%; right: 36%; height: 135px; }
+  .img-papeles { top: 40%; right: 21%; height: 90px; }
+  .img-libreta { bottom: 33%; left: 33%; height: 92px; }
+  .img-walpaperIphone { bottom: 29%; right: 27%; height: 92px; }
+}
+
+/* ====== <= 768px (tablets portrait / móviles grandes) ====== */
 @media (max-width: 768px) {
-  .img-mac { height: 180px; }
-  .img-headphones { height: 140px; }
-  .img-lapices { height: 170px; }
-  .img-posits { height: 170px; }
-  .img-papeles { height: 110px; }
-  .img-libreta { height: 110px; }
-  .img-walpaperIphone { height: 110px; }
-  .img-chicles { height: 90px; }
-  .img-gafas { height: 100px; }
-  .img-matcha { height: 80px; }
-  .img-cacao { height: 70px; }
-  .img-papel { height: 70px; }
+  .img-mac { top: 34%; left: 10%; height: 110px; }
+  .img-chicles { bottom: 43%; left: 20%; height: 40px; }
+  .img-gafas { bottom: 32%; left: 45%; height: 62px; }
+  .img-cacao { top: 37%; left: 40%; height: 40px; }
+  .img-headphones { top: 35%; right: 22%; height: 92px; }
+  .img-lapices { top: 39%; left: 39%; height: 125px; }
+  .img-matcha { bottom: 40%; left: 54%; height: 44px; }
+  .img-papel { top: 33%; left: 33%; height: 50px; }
+  .img-posits { top: 33%; right: 34%; height: 115px; }
+  .img-papeles { top: 40%; right: 19%; height: 78px; }
+  .img-libreta { bottom: 32%; left: 31%; height: 82px; }
+  .img-walpaperIphone { bottom: 28%; right: 25%; height: 82px; }
 }
 
-/* Móviles muy pequeños */
-@media (max-width: 860px) {
-  .img-overlay {
-    display: none; /* Ocultar imágenes en pantallas muy pequeñas */
-  }
+/* ====== <= 480px (móviles pequeños) ====== */
+/* Si prefieres seguir viéndolos, dejamos una versión muy compacta; 
+   si no, puedes mantener tu regla anterior de ocultar el overlay. */
+@media (max-width: 480px) {
+  .img-mac { top: 34%; left: 6%; height: 90px; }
+  .img-chicles { bottom: 44%; left: 16%; height: 34px; }
+  .img-gafas { bottom: 30%; left: 44%; height: 52px; }
+  .img-cacao { top: 37%; left: 38%; height: 34px; }
+  .img-headphones { top: 35%; right: 18%; height: 78px; }
+  .img-lapices { top: 39%; left: 38%; height: 105px; }
+  .img-matcha { bottom: 39%; left: 53%; height: 38px; }
+  .img-papel { top: 33%; left: 31%; height: 44px; }
+  .img-posits { top: 33%; right: 30%; height: 95px; }
+  .img-papeles { top: 40%; right: 16%; height: 66px; }
+  .img-libreta { bottom: 30%; left: 29%; height: 70px; }
+  .img-walpaperIphone { bottom: 26%; right: 22%; height: 70px; }
 }

@@ -3,65 +3,59 @@
 ---
 
 <style>
-  .header {
+  header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
-    font-weight: bold;
     z-index: 1000;
+    padding: 10px 30px 10px 10px;
+    box-sizing: border-box;
   }
 
-  .header p {
+  nav {
+    display: flex;
+    gap: 30px;
+  }
+
+  nav p {
     color: red;
-    margin: 25px;
-    padding: 0;
-    font-size: 2.5vmin;
+    font-size: 1.9vmin;
     font-family: Arial, Helvetica, sans-serif;
-    opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.3s ease forwards;
+    animation: fadeInUp 1s ease forwards;
+    cursor: pointer;
+    letter-spacing: -0.9px;
   }
 
-  .header p:nth-child(1) {
-    animation-delay: 0.2s;
-  }
-  .header p:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-  .header p:nth-child(3) {
-    animation-delay: 0.6s;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
   a {
-    color: red;
     text-decoration: none;
-    z-index: 9999;
+    color: red;
   }
 
   a:hover {
     text-decoration: underline;
   }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>
 
 <header class="header">
-  <p><a href="">CV</a></p>
-  <p><a href="/sobremi">SOBRE MÍ</a></p>
-  <p><a href="">CONTACTO</a></p>
+  <nav>
+    <p><a href="/sobremi">SOBRE MÍ</a></p>
+    <p><a href="">CONTACTO</a></p>
+  </nav>
 </header>
+
+
