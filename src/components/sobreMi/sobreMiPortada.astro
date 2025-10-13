@@ -1,0 +1,210 @@
+---
+import Badgeds from "./badgeds.astro";
+import SpotifyPlaylist from "./spotifyPlaylist.astro";
+---
+
+<style>
+  @font-face {
+    font-family: "BricolageGrotesque";
+    src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf")
+      format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .contenedor {
+    margin: 60px 15px 300px 15px;
+  }
+
+  .sobre-mi {
+    display: flex;
+    gap: 32px;
+  }
+
+  .text-column {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .text-column h1 {
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: 5rem;
+    letter-spacing: -1px;
+    line-height: 0;
+  }
+
+  .text-column p {
+    font-size: 1.4rem;
+  }
+
+  .img-column img {
+    max-width: 600px;
+  }
+
+  .texto-dos-section {
+    margin-top: 130px;
+  }
+
+  .texto-dos-section p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 1.4rem;
+    max-width: 500px;
+  }
+
+  .texto-dos-section h1 {
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: 5rem;
+    letter-spacing: -1px;
+    line-height: 0;
+    color: red;
+  }
+
+  @keyframes subir-con-scroll {
+    0% {
+      /* opacity: 0; */
+      transform: translateY(160px);
+    }
+    100% {
+      /* opacity: 1; */
+      transform: translateY(0);
+    }
+  }
+
+  .texto-dos-section {
+    /* Tu espaciado normal en layout */
+    margin-top: 130px;
+
+    /* Estado inicial “más abajo” visualmente */
+    opacity: 1;
+    transform: translateY(140px);
+    will-change: transform, opacity;
+
+    /* Vincular animación al scroll */
+    animation: subir-con-scroll linear both;
+    /* El progreso de la animación sigue el viewport */
+    animation-timeline: view();
+    /* Empieza cuando entra y termina cuando cubre ~60–70% */
+    animation-range: entry 0% cover 65%;
+  }
+
+  .texto-tres-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .texto-tres-section p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 1.4rem;
+    align-self: center;
+    margin-top: 130px;
+    text-align: center;
+    max-width: 900px;
+
+    /* Estado inicial “más abajo” visualmente */
+    opacity: 1;
+    transform: translateY(140px);
+    will-change: transform, opacity;
+
+    /* Vincular animación al scroll */
+    animation: subir-con-scroll linear both;
+    /* El progreso de la animación sigue el viewport */
+    animation-timeline: view();
+    /* Empieza cuando entra y termina cuando cubre ~60–70% */
+    animation-range: entry 0% cover 65%;
+  }
+
+  .video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Estado inicial “más abajo” visualmente */
+    opacity: 1;
+    transform: translateY(140px);
+    will-change: transform, opacity;
+
+    /* Vincular animación al scroll */
+    animation: subir-con-scroll linear both;
+    /* El progreso de la animación sigue el viewport */
+    animation-timeline: view();
+    /* Empieza cuando entra y termina cuando cubre ~60–70% */
+    animation-range: entry 0% cover 65%;
+    margin-top: 100px;
+  }
+
+  video {
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Efecto al pasar el ratón */
+  video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
+  }
+</style>
+
+<div class="contenedor">
+  <div class="sobre-mi">
+    <div class="text-column">
+      <h1>SOBRE MÍ</h1>
+      <p>
+        Soy Paula, una creativa valenciana de 21 años (casi) licenciada en
+        Publicidad y Relaciones Públicas.
+      </p>
+      <p>
+        Me mueve la curiosidad y la necesidad constante de aprender cosas
+        nuevas, podría incluso decirse que soy una <strong
+          >curiosa ignorante</strong
+        >: sé que me queda mucho por descubrir, pero precisamente esa curiosidad
+        es la que me hace aprender cada día un poco más y alejarme de esa
+        ignorancia.
+      </p>
+      <Badgeds />
+    </div>
+    <div class="img-column">
+      <img src="/fotos/sobremi/sobremi_metro_londres.webp" alt="" />
+    </div>
+  </div>
+
+  <section class="texto-dos-section">
+    <h1>Asi soy yo</h1>
+    <p>
+      <strong>No sé quedarme quieta;</strong> siempre estoy pensando en proyectos,
+      ideas o formas distintas de exprimir mi creatividad. aunque estoy dando mis
+      primeros pasos en el mundo de la publicidad, he trabajado en otros sectores
+      que me han enseñado a observar, comunicar y escuchar a las personas desde cerca.
+      De ahí nace mi forma de entender la comunicación:
+      <strong>cercana, humana y revolucionaria.</strong>
+    </p>
+  </section>
+
+  <section class="texto-tres-section">
+    <p>
+      Me encanta equivocarme y aprender del tropiezo, las canciones de Rosalía,
+      y esas charlas con amigos que siempre acaban siendo una lluvia de
+      insights, Porque, al final, <strong
+        >no sé estar quieta, pero sé contar todo lo que me agita.</strong
+      >
+    </p>
+  </section>
+
+  <div class="video-section">
+    <video controls poster="/fotos/sobremi/miniatura_video.png">
+      <source src="video/videoporfolio.MOV" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
+  </div>
+
+  <SpotifyPlaylist />
+
+</div>

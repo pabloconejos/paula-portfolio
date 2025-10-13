@@ -1,0 +1,151 @@
+---
+export interface PlaylistItem {
+  id?: string | number;
+  image: string;
+  month: string;
+  year: string | number;
+  name: string;
+  subtitle?: string;
+}
+
+interface Props {
+  title?: string;
+  items?: PlaylistItem[];
+}
+
+const demoItems: PlaylistItem[] = [
+  { image: "/fotos/playlist/prueba.jpeg", month: "September", year: 2025, name: "I Remember To Forget" },
+  { image: "/fotos/playlist/prueba.jpeg", month: "August",    year: 2025, name: "Be Careful With Your Dreams" },
+  { image: "/fotos/playlist/prueba.jpeg", month: "July",      year: 2025, name: "Sugar High Now" },
+  { image: "/fotos/playlist/prueba.jpeg", month: "June",      year: 2025, name: "Wild Heart" },
+  { image: "/fotos/playlist/prueba.jpeg", month: "May",       year: 2025, name: "Spinning Around" },
+];
+
+const { title = "Mis playlists favoritas :)", items = demoItems } = Astro.props as Props;
+---
+
+<style>
+  /* Evita que los bordes/ padding sumen ancho y provoquen overflow */
+  :where(.playlist-section, .playlist-section *) { box-sizing: border-box; }
+
+  :root {
+    --gap: clamp(.75rem, 1.8vw, 1rem);
+    --brand: red;
+    --surface: #fff;
+    --radius: 12px;
+    --border: red;
+  }
+
+
+
+  .playlist-section {
+    width: min(1100px, 100%);
+    margin-inline: auto;
+    margin-top: 100px;
+    container-type: inline-size; /* habilita @container (opcional) */
+  }
+
+  .playlist-title {
+    margin: 0 0 clamp(1rem, 3vw, 2rem);
+    color: var(--brand);
+    font-weight: 900;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    line-height: 1;
+    letter-spacing: -.02em;
+    font-family: system-ui, sans-serif;
+  }
+
+  /* GRID RESPONSIVE sin desbordes */
+  .playlist-grid {
+    display: grid;
+    gap: var(--gap);
+    /* 220px mínimo por tarjeta; se rellena con 1fr sin provocar anchos fijos */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: stretch;
+  }
+
+  /* La tarjeta NUNCA tiene ancho fijo */
+  .playlist-card {
+    width: 100%;                /* clave para evitar overflow */
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .playlist-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.15); }
+
+  .playlist-img {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .playlist-info {
+    padding: 1rem;
+    text-align: start;
+  }
+
+  .playlist-info h3 {
+    margin: 0 0 .25rem;
+    color: var(--brand);
+    font: 700 clamp(1.05rem, 2.3vw, 1.35rem)/1.2 system-ui, sans-serif;
+    /* evita cortes feos si el mes es largo y el ancho es pequeño */
+    overflow-wrap: anywhere;
+  }
+
+  .playlist-info p {
+    margin: 0;
+    color: var(--text);
+    font: 500 clamp(.95rem, 2vw, 1.1rem)/1.35 system-ui, sans-serif;
+  }
+
+  .playlist-info .subtitle {
+    margin-top: .25rem;
+    color: var(--text-subtle);
+    font-size: clamp(.85rem, 1.8vw, .95rem);
+  }
+
+  /* Ajustes para pantallas muy pequeñas */
+  @media (max-width: 380px) {
+    .playlist-grid { grid-template-columns: 1fr; }
+    .playlist-title { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  }
+
+  /* Si usas @container, mejora columnas en contenedor ancho */
+  @container (min-width: 900px) {
+    .playlist-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  }
+</style>
+
+<section class="playlist-section" aria-labelledby="playlist-heading">
+  <h1 id="playlist-heading" class="playlist-title">{title}</h1>
+
+  {items?.length ? (
+    <div class="playlist-grid" role="list">
+      {items.map((p) => (
+        <article class="playlist-card" role="listitem" aria-label={`${p.month} ${p.year} – ${p.name}`}>
+          <img
+            src={p.image}
+            alt={p.name ?? `${p.month} ${p.year}`}
+            class="playlist-img"
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 480px) 90vw, (max-width: 900px) 45vw, 240px"
+          />
+          <div class="playlist-info">
+            <h3>{p.month} {p.year}</h3>
+            <p>{p.name}</p>
+            {p.subtitle && <p class="subtitle">{p.subtitle}</p>}
+          </div>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <p role="status">No hay playlists para mostrar.</p>
+  )}
+</section>

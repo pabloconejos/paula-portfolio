@@ -1,0 +1,75 @@
+<style>
+  .badgeds {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 32px;
+    font-family: system-ui, sans-serif;
+  }
+
+  /* Botón píldora con borde */
+  .badged {
+    position: relative;
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1.5px solid red;
+    border-radius: 999px;
+    color: red;
+    text-decoration: none;
+    overflow: hidden;              /* oculta el pseudo-elemento */
+    transition: color .25s ease;   /* color del texto */
+  }
+
+  /* Capa que “barre” el fondo desde la izquierda */
+  .badged::before {
+    content: "";
+    position: absolute;
+    inset: 0;                      /* top/right/bottom/left: 0 */
+    background: red;
+    transform: translateX(-100%);  /* empieza fuera por la izquierda */
+    transition: transform .35s ease;
+    z-index: 0;
+  }
+
+  /* Texto por encima de la capa */
+  .badged > span {
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+  }
+
+  /* Hover: el fondo entra y el texto se vuelve blanco */
+  .badged:hover {
+    color: #fff;
+  }
+  .badged:hover::before {
+    transform: translateX(0);      /* “wipe” hacia la derecha */
+  }
+
+  /* Versión solo texto (como “Book a call”) */
+  .link-text {
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+  }
+  .link-text:hover {
+    text-decoration: underline;
+  }
+
+  /* Accesibilidad: sin animaciones si el usuario lo prefiere */
+  @media (prefers-reduced-motion: reduce) {
+    .badged::before,
+    .badged,
+    .link-text {
+      transition: none;
+    }
+  }
+</style>
+
+<div class="badgeds">
+  <a class="badged" href="#">
+    <span>Say Hello</span>
+  </a>
+
+  <a class="link-text" href="#">Instagram</a>
+</div>
