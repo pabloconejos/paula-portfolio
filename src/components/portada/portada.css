@@ -75,12 +75,13 @@
 
 .titulo-vertical {
   font-size: 30vmin;
-  font-family: "Wedges", sans-serif;
+  font-family: "BricolageGrotesque", sans-serif;
   color: red;
-  letter-spacing: -20px;
+  letter-spacing: -8px;
   margin: 0;
   padding: 0;
   line-height: 0.9;
+  text-align: center;
 }
 
 .portada {

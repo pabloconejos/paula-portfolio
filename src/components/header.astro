@@ -55,7 +55,7 @@ const activeIndex = navItems.findIndex(item => {
     display: block;
     padding: 14px 28px;
     text-decoration: none;
-    color: #111;
+    color: red;
     font-weight: 600;
     font-size: 18px;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -75,7 +75,10 @@ const activeIndex = navItems.findIndex(item => {
     transition: opacity .28s cubic-bezier(.4,0,.2,1),
                 transform .28s cubic-bezier(.4,0,.2,1);
   }
-  .link.active { color: red; }
+  .link.active { 
+    background-color: red;
+    color: white;
+   }
   .link.active::before {
     opacity: 1;
     transform: scale(1);      /* “aparece” la mancha */
@@ -88,66 +91,4 @@ const activeIndex = navItems.findIndex(item => {
     .link::before { transition: none; }
   }
 </style>
-
-<!-- 
-<script>
-  // Este script posiciona el “pill” bajo el enlace activo y lo anima al hacer click.
-  const track = document.getElementById('nav-track');
-  const list = document.getElementById('nav-list');
-  const pill = document.getElementById('nav-pill');
-  const links = Array.from(list!.querySelectorAll('a.link'));
-
-  function rectRelativeTo(el: { getBoundingClientRect: () => any; }, to: HTMLElement | null) {
-    const r1 = el.getBoundingClientRect();
-    const r2 = to!.getBoundingClientRect();
-    return { left: r1.left - r2.left, width: r1.width };
-  }
-
-  function movePillTo(el: Element) {
-    const { left, width } = rectRelativeTo(el, track);
-    // La pill tiene top/left en 6px de padding; compensamos con CSS translateX.
-    pill!.style.setProperty('--pill-x', `${left}px`);
-    pill!.style.width = `${width}px`;
-  }
-
-  // Inicial: colócalo en el activo (servidor ya marcó .active via currentPath)
-  const active = links.find(a => a.classList.contains('active')) || links[0];
-  if (active) movePillTo(active);
-
-  // Recalcular en resize (por si cambia el ancho)
-  let rafId: number;
-  const onResize = () => {
-    cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
-      const current =
-        document.querySelector('a.link.active') || links[0];
-      if (current) movePillTo(current);
-    });
-  };
-  window.addEventListener('resize', onResize);
-
-  // Al hacer click: animar hacia el destino y luego navegar
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  links.forEach(link => {
-    const a = link as HTMLAnchorElement;
-    a.addEventListener('click', (e) => {
-      // Si recargas toda la página, la animación se perdería.
-      // Hacemos una micro-animación antes de navegar.
-      e.preventDefault();
-      links.forEach(l => l.classList.remove('active'));
-      a.classList.add('active');
-      movePillTo(a);
-
-      const go = () => { window.location.href = a.href; };
-
-      if (prefersReduced) { go(); return; }
-
-      // Espera a que termine la transición o 220ms, lo que ocurra primero.
-      let done = false;
-      const onEnd = () => { if (done) return; done = true; pill!.removeEventListener('transitionend', onEnd); go(); };
-      pill!.addEventListener('transitionend', onEnd, { once: true });
-      setTimeout(onEnd, 220);
-    });
-  });
-</script> -->
+ 

@@ -12,9 +12,8 @@ useEffect(() => {
 
   const images = overlay.querySelectorAll('img');
 
-  // multiplica o reduce aquí si quieres el efecto más fuerte o suave
-  const RADIUS_FACTOR = 1.2;   // radio ≈ 1.2 × diagonal de la imagen
-  const PUSH_FACTOR   = 3.5;   // empuje máx ≈ 3.5 × diagonal de la imagen
+  const RADIUS_FACTOR = 1.2;
+  const PUSH_FACTOR   = 3.5;
   const stiffness = 0.12;
 
   targetsRef.current = Array.from(images).map(img => ({
@@ -28,13 +27,32 @@ useEffect(() => {
 
   const mouse = mouseRef.current;
 
-  const handleMouseMove = (e) => {
+  // ---- Handlers con Pointer Events ----
+  const handlePointerDown = (e) => {
+    // Captura el puntero para seguir recibiendo pointermove aunque el dedo se salga del overlay
+    try { overlay.setPointerCapture(e.pointerId); } catch {}
     mouse.x = e.clientX;
     mouse.y = e.clientY;
   };
-  const handleMouseLeave = () => {
+
+  const handlePointerMove = (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  };
+
+  const resetMouse = () => {
     mouse.x = -1000;
     mouse.y = -1000;
+  };
+
+  const handlePointerUp = (e) => {
+    try { overlay.releasePointerCapture(e.pointerId); } catch {}
+    resetMouse();
+  };
+
+  const handlePointerLeave = () => {
+    // En desktop sin captura, cuando sale del overlay reseteamos
+    resetMouse();
   };
 
   let rafId;
@@ -44,10 +62,7 @@ useEffect(() => {
       const img = item.element;
       const rect = img.getBoundingClientRect();
 
-      // tamaño característico de la imagen (diagonal)
       const diag = Math.hypot(rect.width, rect.height);
-
-      // radio y empuje máximos adaptados al tamaño de la imagen
       const repulsionRadius = Math.max(60, diag * RADIUS_FACTOR);
       const maxPushDistance = Math.max(140, diag * PUSH_FACTOR);
 
@@ -61,13 +76,10 @@ useEffect(() => {
       let targetPushX = 0, targetPushY = 0;
 
       if (dist > 0 && dist < repulsionRadius) {
-        const proximity = 1 - (dist / repulsionRadius);      // 0..1
-        // curva suave (cúbica) para que no sea brusco al acercarse
+        const proximity = 1 - (dist / repulsionRadius);
         const push = Math.pow(proximity, 3) * maxPushDistance;
-
         const ux = dx / dist;
         const uy = dy / dist;
-
         targetPushX = ux * push;
         targetPushY = uy * push;
       } else if (dist === 0) {
@@ -82,24 +94,31 @@ useEffect(() => {
 
       const x = Math.round(item.currentX);
       const y = Math.round(item.currentY);
-
-      // usa translate3d para mejor rendimiento (GPU)
       img.style.transform = `translate3d(${x}px, ${y}px, 0) ${item.originalTransform}`;
     });
 
     rafId = requestAnimationFrame(updateImagePositions);
   };
 
-  overlay.addEventListener('mousemove', handleMouseMove);
-  overlay.addEventListener('mouseleave', handleMouseLeave);
+  // Suscripciones pointer
+  overlay.addEventListener('pointerdown', handlePointerDown);
+  overlay.addEventListener('pointermove', handlePointerMove);
+  overlay.addEventListener('pointerup', handlePointerUp);
+  overlay.addEventListener('pointercancel', handlePointerUp);
+  overlay.addEventListener('pointerleave', handlePointerLeave);
+
   rafId = requestAnimationFrame(updateImagePositions);
 
   return () => {
-    overlay.removeEventListener('mousemove', handleMouseMove);
-    overlay.removeEventListener('mouseleave', handleMouseLeave);
+    overlay.removeEventListener('pointerdown', handlePointerDown);
+    overlay.removeEventListener('pointermove', handlePointerMove);
+    overlay.removeEventListener('pointerup', handlePointerUp);
+    overlay.removeEventListener('pointercancel', handlePointerUp);
+    overlay.removeEventListener('pointerleave', handlePointerLeave);
     cancelAnimationFrame(rafId);
   };
 }, []);
+
 
 
   return (
