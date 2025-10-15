@@ -1,61 +1,153 @@
 ---
+const currentPath = Astro.url.pathname;
 
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/sobremi' },
+];
+
+const activeIndex = navItems.findIndex(item => {
+  if (item.path === '/') return currentPath === '/';
+  return currentPath !== '/' && currentPath.startsWith(item.path);
+});
 ---
+<nav class="nav" aria-label="Main">
+  <div class="track">
+    <ul class="list">
+      {navItems.map((item, index) => (
+        <li class="item">
+          <a
+            href={item.path}
+            class:list={['link', { active: index === activeIndex }]}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
 
 <style>
-  header {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
+  .nav {
     position: fixed;
-    top: 0;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    padding: 10px 30px 10px 10px;
-    box-sizing: border-box;
   }
-
-  nav {
+  .track {
+    position: relative;
+    background: #ececec;
+    border-radius: 999px;
+    padding: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.08) inset, 0 4px 16px rgba(0,0,0,.06);
+  }
+  .list {
     display: flex;
-    gap: 30px;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
-
-  nav p {
-    color: red;
-    font-size: 1.9vmin;
-    font-family: Arial, Helvetica, sans-serif;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
-    cursor: pointer;
-    letter-spacing: -0.9px;
-  }
-
-  a {
+  .link {
+    position: relative;
+    display: block;
+    padding: 14px 28px;
     text-decoration: none;
-    color: red;
+    color: #111;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: color .2s ease;
+  }
+  .link::before {
+    content: "";
+    position: absolute;
+    inset: 0;                 /* ocupa todo el botón */
+    border-radius: inherit;
+    background: #000;         /* cámbialo a #d33 si la quieres roja */
+    z-index: -1;              /* queda detrás del texto */
+    transform: scale(0.96);   /* ligero encogido */
+    opacity: 0;               /* oculta por defecto */
+    transition: opacity .28s cubic-bezier(.4,0,.2,1),
+                transform .28s cubic-bezier(.4,0,.2,1);
+  }
+  .link.active { color: red; }
+  .link.active::before {
+    opacity: 1;
+    transform: scale(1);      /* “aparece” la mancha */
   }
 
-  a:hover {
-    text-decoration: underline;
-  }
+  /* (Opcional) también muévela en hover dentro de la misma página */
+  .link:not(.active):hover::before { opacity: .12; }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @media (prefers-reduced-motion: reduce) {
+    .link::before { transition: none; }
   }
 </style>
 
-<header class="header">
-  <nav>
-    <p><a href="/sobremi">SOBRE MÍ</a></p>
-    <p><a href="">CONTACTO</a></p>
-  </nav>
-</header>
+<!-- 
+<script>
+  // Este script posiciona el “pill” bajo el enlace activo y lo anima al hacer click.
+  const track = document.getElementById('nav-track');
+  const list = document.getElementById('nav-list');
+  const pill = document.getElementById('nav-pill');
+  const links = Array.from(list!.querySelectorAll('a.link'));
 
+  function rectRelativeTo(el: { getBoundingClientRect: () => any; }, to: HTMLElement | null) {
+    const r1 = el.getBoundingClientRect();
+    const r2 = to!.getBoundingClientRect();
+    return { left: r1.left - r2.left, width: r1.width };
+  }
 
+  function movePillTo(el: Element) {
+    const { left, width } = rectRelativeTo(el, track);
+    // La pill tiene top/left en 6px de padding; compensamos con CSS translateX.
+    pill!.style.setProperty('--pill-x', `${left}px`);
+    pill!.style.width = `${width}px`;
+  }
+
+  // Inicial: colócalo en el activo (servidor ya marcó .active via currentPath)
+  const active = links.find(a => a.classList.contains('active')) || links[0];
+  if (active) movePillTo(active);
+
+  // Recalcular en resize (por si cambia el ancho)
+  let rafId: number;
+  const onResize = () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      const current =
+        document.querySelector('a.link.active') || links[0];
+      if (current) movePillTo(current);
+    });
+  };
+  window.addEventListener('resize', onResize);
+
+  // Al hacer click: animar hacia el destino y luego navegar
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  links.forEach(link => {
+    const a = link as HTMLAnchorElement;
+    a.addEventListener('click', (e) => {
+      // Si recargas toda la página, la animación se perdería.
+      // Hacemos una micro-animación antes de navegar.
+      e.preventDefault();
+      links.forEach(l => l.classList.remove('active'));
+      a.classList.add('active');
+      movePillTo(a);
+
+      const go = () => { window.location.href = a.href; };
+
+      if (prefersReduced) { go(); return; }
+
+      // Espera a que termine la transición o 220ms, lo que ocurra primero.
+      let done = false;
+      const onEnd = () => { if (done) return; done = true; pill!.removeEventListener('transitionend', onEnd); go(); };
+      pill!.addEventListener('transitionend', onEnd, { once: true });
+      setTimeout(onEnd, 220);
+    });
+  });
+</script> -->

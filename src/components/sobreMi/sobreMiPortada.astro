@@ -1,4 +1,5 @@
 ---
+import AsiSoyYo from "./asi-soy-yo.astro";
 import Badgeds from "./badgeds.astro";
 import SpotifyPlaylist from "./spotifyPlaylist.astro";
 ---
@@ -16,9 +17,82 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
     margin: 60px 15px 300px 15px;
   }
 
+  /* --- Responsive "sobre-mi" --- */
   .sobre-mi {
     display: flex;
     gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* permite salto si no cabe */
+  }
+
+  .img-column {
+    text-align: center;
+  }
+
+  /* Opcional: que cada columna pueda contraerse sin romper */
+  .text-column,
+  .img-column {
+    flex: 1 1 380px; /* crece, encoge, base */
+  }
+
+  /* Imagen fluida también en desktop */
+  .img-column img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Cuando el viewport es estrecho, forzamos columna y orden */
+  @media (max-width: 900px) {
+    .sobre-mi {
+      flex-direction: column; /* apilar */
+    }
+    .text-column {
+      order: 1;
+    }
+    .img-column {
+      order: 2;
+    }
+
+    /* Ajustes tipográficos para móviles */
+    .text-column h1,
+    .texto-dos-section h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      line-height: 1.05;
+    }
+    .text-column p,
+    .texto-dos-section p,
+    .texto-tres-section p {
+      font-size: clamp(1rem, 3.8vw, 1.2rem);
+    }
+
+    /* Márgenes más cómodos en móvil */
+    .contenedor {
+      margin: 30px 15px 160px 15px;
+    }
+    .texto-dos-section {
+      margin-top: 80px;
+    }
+    .texto-tres-section p {
+      margin-top: 80px;
+      max-width: 100%;
+    }
+    .video-section {
+      margin-top: 60px;
+    }
+  }
+
+  /* (Opcional) Si quieres que baje solo cuando realmente no quepa
+   sin depender del ancho del viewport, usa container queries: */
+  @container (inline-size < 800px) {
+    .sobre-mi {
+      flex-direction: column;
+    }
+    .text-column {
+      order: 1;
+    }
+    .img-column {
+      order: 2;
+    }
   }
 
   .text-column {
@@ -38,27 +112,10 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
   }
 
   .img-column img {
-    max-width: 600px;
+    max-width: 900px;
   }
 
-  .texto-dos-section {
-    margin-top: 130px;
-  }
 
-  .texto-dos-section p {
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
-    font-size: 1.4rem;
-    max-width: 500px;
-  }
-
-  .texto-dos-section h1 {
-    font-family: "BricolageGrotesque", sans-serif;
-    font-size: 5rem;
-    letter-spacing: -1px;
-    line-height: 0;
-    color: red;
-  }
 
   @keyframes subir-con-scroll {
     0% {
@@ -69,23 +126,6 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
       /* opacity: 1; */
       transform: translateY(0);
     }
-  }
-
-  .texto-dos-section {
-    /* Tu espaciado normal en layout */
-    margin-top: 130px;
-
-    /* Estado inicial “más abajo” visualmente */
-    opacity: 1;
-    transform: translateY(140px);
-    will-change: transform, opacity;
-
-    /* Vincular animación al scroll */
-    animation: subir-con-scroll linear both;
-    /* El progreso de la animación sigue el viewport */
-    animation-timeline: view();
-    /* Empieza cuando entra y termina cuando cubre ~60–70% */
-    animation-range: entry 0% cover 65%;
   }
 
   .texto-tres-section {
@@ -176,17 +216,7 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
     </div>
   </div>
 
-  <section class="texto-dos-section">
-    <h1>Asi soy yo</h1>
-    <p>
-      <strong>No sé quedarme quieta;</strong> siempre estoy pensando en proyectos,
-      ideas o formas distintas de exprimir mi creatividad. aunque estoy dando mis
-      primeros pasos en el mundo de la publicidad, he trabajado en otros sectores
-      que me han enseñado a observar, comunicar y escuchar a las personas desde cerca.
-      De ahí nace mi forma de entender la comunicación:
-      <strong>cercana, humana y revolucionaria.</strong>
-    </p>
-  </section>
+  <AsiSoyYo />
 
   <section class="texto-tres-section">
     <p>
@@ -206,5 +236,4 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
   </div>
 
   <SpotifyPlaylist />
-
 </div>

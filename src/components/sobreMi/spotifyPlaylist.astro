@@ -18,7 +18,6 @@ const demoItems: PlaylistItem[] = [
   { image: "/fotos/playlist/prueba.jpeg", month: "August",    year: 2025, name: "Be Careful With Your Dreams" },
   { image: "/fotos/playlist/prueba.jpeg", month: "July",      year: 2025, name: "Sugar High Now" },
   { image: "/fotos/playlist/prueba.jpeg", month: "June",      year: 2025, name: "Wild Heart" },
-  { image: "/fotos/playlist/prueba.jpeg", month: "May",       year: 2025, name: "Spinning Around" },
 ];
 
 const { title = "Mis playlists favoritas :)", items = demoItems } = Astro.props as Props;
@@ -75,7 +74,7 @@ const { title = "Mis playlists favoritas :)", items = demoItems } = Astro.props 
     flex-direction: column;
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
-  .playlist-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.15); }
+  .playlist-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.15); cursor: pointer; }
 
   .playlist-img {
     display: block;
