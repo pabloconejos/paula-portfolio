@@ -1,6 +1,4 @@
 ---
-import Id from "../pages/projects/[id].astro";
-
 const proyects = [
   {
     id: "iberia",
@@ -85,14 +83,32 @@ const proyects = [
     aspect-ratio: 16 / 9;
     overflow: hidden;
     position: relative;
+
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
   }
 
-  .proyecto-card img {
+  .proyecto-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     border-radius: 5px;
+
+    
+  }
+
+  @keyframes reveal {
+    from {
+      /* opacity: 0; */
+      translate: 0 100px;
+    }
+
+    to {
+      /* opacity: 1; */
+      translate: 0 0;
+    }
   }
 
   .overlay {
@@ -141,6 +157,8 @@ const proyects = [
     opacity: 1;
   }
 
+
+
 </style>
 
 <section class="proyectos">
@@ -150,7 +168,7 @@ const proyects = [
       proyects.map((proyecto) => (
         <article class="proyecto-card">
           <a href={`projects/${proyecto.id}`}>
-            <img src={proyecto.imageUrl} alt={`Imagen de ${proyecto.title}`} />
+            <img class="proyecto-img" src={proyecto.imageUrl} alt={`Imagen de ${proyecto.title}`} />
             <div class="overlay">
               <p class="title">{proyecto.title}</p>
               <p class="subTitle">{proyecto.subtitle}</p>
@@ -162,24 +180,3 @@ const proyects = [
   </div>
 </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const h2 = document.querySelector(".proyectos h2");
-
-    if (h2) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              h2.classList.add("visible");
-              observer.unobserve(h2); // opcional: solo una vez
-            }
-          });
-        },
-        { threshold: 0.3 } // activa cuando un 30% del elemento esté visible
-      );
-
-      observer.observe(h2);
-    }
-  });
-</script>

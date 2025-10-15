@@ -1,58 +1,81 @@
 <style>
-      @font-face {
-        font-family: "BricolageGrotesque";
-        src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf")
-        format("truetype");
-        font-weight: normal;
-        font-style: normal;
+  @font-face {
+    font-family: "BricolageGrotesque";
+    src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf")
+      format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .asi-soy-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 130px;
+  }
+
+  .img-section {
+    width: 500px;
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+
+  .img-section img {
+    width: 100%;
+  }
+
+  .texto-section {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+    margin-top: 400px;
+  }
+
+  .texto-section p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 1.4rem;
+    max-width: 500px;
+  }
+
+  .texto-section h1 {
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: 5rem;
+    letter-spacing: -1px;
+    line-height: 0;
+    color: red;
+  }
+
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      translate: 0 100px;
     }
 
-    .asiSoyYo-section{
-      margin-top: 130px;
-    }
-
-    .asiSoyYo-section p {
-      font-family: Arial, Helvetica, sans-serif;
-      color: red;
-      font-size: 1.4rem;
-      max-width: 500px;
-    }
-
-    .asiSoyYo-section h1 {
-      font-family: "BricolageGrotesque", sans-serif;
-      font-size: 5rem;
-      letter-spacing: -1px;
-      line-height: 0;
-      color: red;
-    }
-
-    .asiSoyYo-section {
-      /* Tu espaciado normal en layout */
-      margin-top: 230px;
-
-      /* Estado inicial “más abajo” visualmente */
+    to {
       opacity: 1;
-      transform: translateY(140px);
-      will-change: transform, opacity;
-
-      /* Vincular animación al scroll */
-      animation: subir-con-scroll linear both;
-      /* El progreso de la animación sigue el viewport */
-      animation-timeline: view();
-      /* Empieza cuando entra y termina cuando cubre ~60–70% */
-      animation-range: entry 0% cover 65%;
+      translate: 0 0;
     }
-  
+  }
 </style>
 
-<section class="asiSoyYo-section">
-  <h1>Asi soy yo</h1>
-  <p>
-    <strong>No sé quedarme quieta;</strong> siempre estoy pensando en proyectos,
-    ideas o formas distintas de exprimir mi creatividad. aunque estoy dando mis primeros
-    pasos en el mundo de la publicidad, he trabajado en otros sectores que me han
-    enseñado a observar, comunicar y escuchar a las personas desde cerca. De ahí
-    nace mi forma de entender la comunicación:
-    <strong>cercana, humana y revolucionaria.</strong>
-  </p>
-</section>
+<div class="asi-soy-section">
+
+  <div class="img-section">
+    <img src="/fotos/sobremi/sobremi_metro_londres.webp" alt="">
+  </div>
+  
+  <section class="texto-section">
+    <h1>Asi soy yo</h1>
+    <p>
+      <strong>No sé quedarme quieta;</strong> siempre estoy pensando en proyectos,
+      ideas o formas distintas de exprimir mi creatividad. aunque estoy dando mis
+      primeros pasos en el mundo de la publicidad, he trabajado en otros sectores
+      que me han enseñado a observar, comunicar y escuchar a las personas desde cerca.
+      De ahí nace mi forma de entender la comunicación:
+      <strong>cercana, humana y revolucionaria.</strong>
+    </p>
+  </section>
+</div>
