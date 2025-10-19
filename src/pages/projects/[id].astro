@@ -10,7 +10,17 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { id, title, images, video_concept, description, subTitulos } = project;
+const {
+  id,
+  titulo_detalle,
+  images,
+  video_concept,
+  description,
+  subTitulos,
+  poster,
+  poster2,
+  creditos,
+} = project;
 
 const index = projects.findIndex((p) => p.id === id);
 const prevProject = projects[index - 1] ?? null;
@@ -29,6 +39,7 @@ const nextProject = projects[index + 1] ?? null;
   }
 
   .info {
+    color: red;
     max-width: 80%;
     display: flex;
     flex-direction: column;
@@ -37,22 +48,29 @@ const nextProject = projects[index + 1] ?? null;
   }
 
   nav {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    /* position: absolute;
-    bottom: 0; */
-    z-index: 1000;
-    padding: 50px 30px 30px 30px;
-    box-sizing: border-box;
+    transition: opacity 0.3s ease;
   }
 
   nav a {
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(0, 0, 0);
+    font-family: "BricolageGrotesque", sans-serif;
+    color: red;
     font-size: 40px;
+  }
+
+  .subtitle {
+    line-height: 0.6;
+    font-weight: 100;
+  }
+
+  .subtitle p {
+    font-size: 16px;
   }
 
   .previus,
@@ -62,29 +80,28 @@ const nextProject = projects[index + 1] ?? null;
 
   .info-section {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
-    gap: 150px;
+    font-family: Helvetica, sans-serif;
+    gap: 350px;
+    width: 100%;
+  }
+
+  .titulo {
     width: 100%;
   }
 
   .titulo h1 {
     margin: 0;
-    padding: 0;
-    font-size: 60px;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: 3rem;
   }
 
-  .subtitle {
-    display: flex;
-    gap: 20px;
+  .descripcion {
+    width: 80%;
   }
 
   .descripcion p {
-    margin: 0;
-    padding: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
+    margin-top: 0;
+    font-weight: 100;
   }
 
   .video-section video,
@@ -95,7 +112,6 @@ const nextProject = projects[index + 1] ?? null;
     object-fit: cover;
     border-radius: 10px;
     margin: 20px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   .video-section,
@@ -111,7 +127,7 @@ const nextProject = projects[index + 1] ?? null;
   }
 
   .image-gallery {
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
   }
 
   video {
@@ -127,35 +143,145 @@ const nextProject = projects[index + 1] ?? null;
     transform: translateY(20px);
     animation: fadeInUp 1s ease forwards;
   }
+
+  @media (max-width: 1066px) {
+    .info-section {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  .creditos {
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    /* margin-top: 20px; */
+    /* line-height: 0.6; */
+    font-weight: 100;
+    width: 100%;
+    text-align: justify;
+  }
+
+  .creditos p {
+    margin: 0;
+  }
+
+  .badgeds {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap; /* permite que los botones bajen de línea */
+    font-family: system-ui, sans-serif;
+  }
+
+  .badged {
+    position: relative;
+    display: inline-block;
+    padding: 10px 26px;
+    border: 1px solid red;
+    border-radius: 999px;
+    color: red;
+    text-decoration: none;
+    overflow: hidden;
+    font-size: 14px;
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .badged::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: red;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 0;
+  }
+
+  .badged > span {
+    position: relative;
+    z-index: 1;
+    font-weight: 100;
+    white-space: nowrap; /* evita saltos de línea dentro del texto */
+  }
+
+  .badged:hover {
+    color: #fff;
+  }
+
+  .badged:hover::before {
+    transform: translateX(0);
+  }
+
+
+  .proyecto-img {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      translate: 0 100px;
+    }
+
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
 </style>
 
-<!-- transition:animate="slide" -->
 
 <Layout>
   <section>
     <div class="info">
       <div class="info-section">
         <div class="titulo">
-          <h1>{title}</h1>
-          <!-- <div class="subtitle">
-          {subTitulos.map((sub) => <p>{sub}</p>)}
-        </div> -->
+          <h1>{titulo_detalle}</h1>
+          <div class="subtitle">
+            {subTitulos.map((sub) => <p>{sub}</p>)}
+          </div>
         </div>
-        <div class="descripcion">
-          <p>{description}</p>
+        <div class="descripcion desc-column">
+          <p>{description.map((desc) => <p set:html={desc} />)}</p>
+          <div class="creditos">
+            {creditos!.map((cred) => <p set:html={cred} />)}
+          </div>
+          {
+            id === "milfshakes" || id === "setmestre" ? (
+              <a class="badged" href={"/midupla"}>
+                <span>Conoce a mí Dupla</span>
+              </a>
+            ) : null
+          }
         </div>
       </div>
 
       <div transition:name={project.id} class="video-section">
-        <video controls poster={images[0]}>
+        <video controls poster={poster}>
           <source src={video_concept[0]} type="video/mp4" />
           Tu navegador no soporta el video.
         </video>
       </div>
-    </div>
 
-    <div class="image-gallery">
-      {images.map((image) => <img src={image} alt="" />)}
+      <div class="image-gallery">
+        {images.map((image) => <img class="proyecto-img" src={image} alt="" />)}
+      </div>
+
+      {
+        video_concept[1] != null ? (
+          <div class="video-section">
+            <video controls poster={poster2}>
+              <source src={video_concept[1]} type="video/mp4" />
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+        ) : null
+      }
     </div>
 
     <nav>

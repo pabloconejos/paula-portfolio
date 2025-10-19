@@ -1,54 +1,4 @@
 ---
-// const proyects = [
-//   {
-//     id: "iberia",
-//     title: "Viajeros del mundo",
-//     subtitle: "Iberia",
-//     description: "Descripción del proyecto 1",
-//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-//     link: "/fotos/portada/1.jpeg",
-//   },
-//   {
-//     id: "moeve",
-//     title: "Gen Moeve",
-//     subtitle: "Moeve",
-//     description: "Descripción del proyecto 2",
-//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-//     link: "/fotos/portada/2.jpeg",
-//   },
-//   {
-//     id: "papajhons",
-//     title: "Dame una pizta, papá",
-//     subtitle: "Papa Jhons",
-//     description: "Descripción del proyecto 3",
-//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-//     link: "/fotos/portada/3.jpeg",
-//   },
-//   {
-//     id: "setmestre",
-//     title: "Set Mestre",
-//     subtitle: "Teka",
-//     description: "Descripción del proyecto 3",
-//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-//     link: "/fotos/portada/3.jpeg",
-//   },
-//   {
-//     id: "proyecto-5",
-//     title: "Proyecto-5",
-//     subtitle: "Proyecto-5",
-//     description: "Descripción del proyecto 3",
-//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-//     link: "/fotos/portada/3.jpeg",
-//   },
-//   {
-//     id: "proyecto-6",
-//     title: "Proyecto-6",
-//     description: "Descripción del proyecto 3",
-//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-//     link: "/fotos/portada/3.jpeg",
-//   },
-// ];
-
 import { projects } from "../data/proyects.js";
 
 const proyects = projects;
@@ -183,7 +133,7 @@ const proyects = projects;
           <a href={`projects/${proyecto.id}`}>
             <img
               class="proyecto-img"
-              src={proyecto.images[0]}
+              src={proyecto.poster}
               alt={`Imagen de ${proyecto.title}`}
             />
             <div class="overlay">
