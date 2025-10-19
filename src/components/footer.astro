@@ -63,23 +63,93 @@
     align-self: flex-center;
   }
 
+  /* Tamaño de fuente base */
   footer p {
-    margin: 0;
-    padding: 0;
     font-size: 2rem;
-    line-height: 1;
-    color: inherit;
-    white-space: nowrap;
-    margin-top: 4rem;
+    margin: 0;
+  }
+
+  /* Tablets (pantallas medianas) */
+  @media (max-width: 1024px) {
+    footer p {
+      font-size: 1.6rem;
+    }
+
+    .titulo-footer .name {
+      font-size: 5rem;
+    }
+  }
+
+  /* Móviles grandes (ancho ≤ 768px) */
+  @media (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .titulo-footer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .titulo-footer .name {
+      font-size: 4rem;
+      margin-top: 2rem;
+    }
+
+    .titulo-footer .marca-registrada {
+      top: 20px;
+      right: -10px;
+      font-size: 2rem;
+    }
+
+    footer p {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+  }
+
+  /* Móviles pequeños (ancho ≤ 480px) */
+  @media (max-width: 480px) {
+    .titulo-footer .name {
+      font-size: 3rem;
+      margin-top: 1rem;
+    }
+
+    .titulo-footer .marca-registrada {
+      top: 12px;
+      right: -8px;
+      font-size: 1.4rem;
+    }
+
+    footer p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      word-break: break-all; /* Evita que el correo desborde el contenedor */
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
   }
 
   footer a {
-    color: inherit;
+    color: white;
     text-decoration: none;
   }
 
   footer a:hover {
     text-decoration: underline;
+  }
+
+  .correo {
+       position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    width: fit-content;
   }
 </style>
 
@@ -88,5 +158,7 @@
     <p class="name">Paula</p>
     <p class="marca-registrada">®</p>
   </div>
-  <p><a href="mailto:paulalberola.work@gmail.com">paulalberola.work@gmail.com</a></p>
+  <p class="correo">
+    <a href="mailto:paulalberola.work@gmail.com">paulalberola.work@gmail.com</a>
+  </p>
 </footer>
