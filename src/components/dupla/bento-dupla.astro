@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bento Grid</title>
+<style>
+  :root{
+    --gap: 16px;
+    --radius: 16px;
+    --bg: #0f0f12;
+    --card-bg: #16171c;
+    --maxw: 1200px;
+  }
+
+  *{ box-sizing: border-box; }
+  img{ max-width: 100%; height: auto; }
+  body{
+    margin:0; padding:24px;
+    background: var(--bg);
+    color:#eee; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .bento{
+    display:grid;
+    gap: var(--gap);
+    max-inline-size: var(--maxw);
+    margin-inline: auto;
+  }
+
+  /* Tarjetas */
+  .card{
+    position:relative;
+    overflow:hidden;
+    border-radius: var(--radius);
+    background: var(--card-bg);
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    outline: 1px solid rgba(255,255,255,.06);
+    transition: transform .2s ease, box-shadow .2s ease, outline-color .2s ease;
+    will-change: transform;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
+    outline-color: rgba(255,255,255,.16);
+  }
+  .card > img{
+    width:100%; height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    user-select:none; -webkit-user-drag:none;
+  }
+
+  /* Mobile: 1 columna, control con aspect-ratio para alturas bonitas */
+  .bento{ grid-template-columns: 1fr; }
+  .aspect-wide  { aspect-ratio: 16/10; }
+  .aspect-tall  { aspect-ratio: 3/4; }
+  .aspect-square{ aspect-ratio: 1/1; }
+
+  /* >=768px: grid de 6 cols. Las filas tienen altura base fija para que los spans “manden”. */
+  @media (min-width: 768px){
+    .bento{
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 90px;   /* altura base; ajusta a gusto */
+      align-items: stretch;
+    }
+
+    /* Quita aspect-ratio en desktop: el grid gobierna tamaño */
+    .card{ aspect-ratio: auto; min-height: 0; }
+
+    /* Mapa (visual):
+       a a a a b b
+       a a a a b b
+       c c c d d d
+       c c c e e e
+    */
+    .a{ grid-column: 1 / span 4; grid-row: 1 / span 2; }
+    .b{ grid-column: 5 / span 2; grid-row: 1 / span 2; }
+    .c{ grid-column: 1 / span 3; grid-row: 3 / span 2; }
+    .d{ grid-column: 4 / span 3; grid-row: 3 / span 1; }
+    .e{ grid-column: 4 / span 3; grid-row: 4 / span 1; }
+  }
+
+  /* >=1024px: un pelín más alto cada fila para respirar */
+  @media (min-width: 1024px){
+    .bento{ grid-auto-rows: 110px; }
+  }
+
+  /* Accesibilidad: reduce animación si el usuario lo pide */
+  @media (prefers-reduced-motion: reduce){
+    .card{ transition: none; }
+    .card:hover{ transform:none; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+  }
+
+  /* Etiquetas opcionales */
+  .tag{
+    position:absolute; left:10px; top:10px;
+    background:rgba(0,0,0,.55); color:#fff;
+    padding:.35rem .6rem; border-radius:999px;
+    font-size:.8rem; letter-spacing:.2px;
+    backdrop-filter: blur(6px);
+  }
+</style>
+</head>
+<body>
+
+<div class="bento">
+  <figure class="card a aspect-wide">
+    <img src="/fotos/dupla/a.jpg" alt="Foto 1" />
+    <!-- <figcaption class="tag">Título opcional</figcaption> -->
+  </figure>
+
+  <figure class="card b aspect-tall">
+    <img src="/fotos/dupla/b.jpg" alt="Foto 2" />
+  </figure>
+
+  <figure class="card c aspect-wide">
+    <img src="/fotos/dupla/c.jpg" alt="Foto 3" />
+  </figure>
+
+  <figure class="card d aspect-wide">
+    <img src="/fotos/dupla/d.jpg" alt="Foto 4" />
+  </figure>
+
+  <figure class="card e aspect-wide">
+    <img src="/fotos/dupla/e.jpg" alt="Foto 5" />
+  </figure>
+</div>
+
+</body>
+</html>

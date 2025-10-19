@@ -11,16 +11,20 @@ const PaulaPortfolio = () => {
 
   // Array of image sources (you'll need to replace these with actual image paths)
   const imageSources = [
-    "/fotos/portada/1.jpeg",
-    "/fotos/portada/2.jpeg",
-    "/fotos/portada/3.jpeg",
-    "/fotos/portada/4.jpeg",
-    "/fotos/portada/5.jpeg",
-    "/fotos/portada/6.jpeg",
-    "/fotos/portada/7.jpeg",
-    "/fotos/portada/8.jpeg",
-    "/fotos/portada/9.jpeg",
-    "/fotos/portada/10.jpeg",
+    "/fotos/portada/1.jpg",
+    "/fotos/portada/2.jpg",
+    "/fotos/portada/3.jpg",
+    "/fotos/portada/4.jpg",
+    "/fotos/portada/5.jpg",
+    "/fotos/portada/6.jpg",
+    "/fotos/portada/7.JPG",
+    "/fotos/portada/8.jpg",
+    "/fotos/portada/9.jpg",
+    "/fotos/portada/10.jpg",
+    "/fotos/portada/11.JPG",
+    "/fotos/portada/12.jpg",
+    "/fotos/portada/13.jpg",
+    "/fotos/portada/14.JPG",
   ];
 
   const [imageStatuses, setImageStatuses] = useState(
