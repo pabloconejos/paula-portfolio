@@ -2,16 +2,10 @@
 import AsiSoyYo from "./asi-soy-yo.astro";
 import Badgeds from "./badgeds.astro";
 import SpotifyPlaylist from "./spotifyPlaylist.astro";
+import VideoPresentacion from "./videoPresentacion.astro";
 ---
 
 <style>
-  @font-face {
-    font-family: "BricolageGrotesque";
-    src: url("/fonts/bricolage_grotesques/BricolageGrotesque96pt-Bold.ttf")
-      format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
 
   .contenedor {
     margin: 60px 15px 300px 15px;
@@ -22,7 +16,6 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
     display: flex;
     gap: 32px;
     align-items: flex-start;
-    flex-wrap: wrap; /* permite salto si no cabe */
   }
 
   .img-column {
@@ -39,60 +32,6 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
   .img-column img {
     width: 100%;
     height: auto;
-  }
-
-  /* Cuando el viewport es estrecho, forzamos columna y orden */
-  @media (max-width: 900px) {
-    .sobre-mi {
-      flex-direction: column; /* apilar */
-    }
-    .text-column {
-      order: 1;
-    }
-    .img-column {
-      order: 2;
-    }
-
-    /* Ajustes tipográficos para móviles */
-    .text-column h1,
-    .texto-dos-section h1 {
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      line-height: 1.05;
-    }
-    .text-column p,
-    .texto-dos-section p,
-    .texto-tres-section p {
-      font-size: clamp(1rem, 3.8vw, 1.2rem);
-    }
-
-    /* Márgenes más cómodos en móvil */
-    .contenedor {
-      margin: 30px 15px 160px 15px;
-    }
-    .texto-dos-section {
-      margin-top: 80px;
-    }
-    .texto-tres-section p {
-      margin-top: 80px;
-      max-width: 100%;
-    }
-    .video-section {
-      margin-top: 60px;
-    }
-  }
-
-  /* (Opcional) Si quieres que baje solo cuando realmente no quepa
-   sin depender del ancho del viewport, usa container queries: */
-  @container (inline-size < 800px) {
-    .sobre-mi {
-      flex-direction: column;
-    }
-    .text-column {
-      order: 1;
-    }
-    .img-column {
-      order: 2;
-    }
   }
 
   .text-column {
@@ -115,53 +54,12 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
     max-width: 900px;
   }
 
-  .texto-tres-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: reveal linear both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 30%;
+  @media (max-width: 900px) {
+    .sobre-mi {
+      display: flex;
+      flex-direction: column;
+    }
   }
-
-  .texto-tres-section p {
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
-    font-size: 1.4rem;
-    align-self: center;
-    margin-top: 130px;
-    margin-bottom: 130px;
-    text-align: center;
-    max-width: 900px;
-  }
-
-  .video-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  video {
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    max-width: 700px;
-    width: 100%;
-    height: auto;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-
-    animation: reveal linear both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 30%;
-  }
-
-  /* Efecto al pasar el ratón */
-  video:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
-  }
-
 
   @keyframes reveal {
     from {
@@ -201,22 +99,7 @@ import SpotifyPlaylist from "./spotifyPlaylist.astro";
 
   <AsiSoyYo />
 
-  <section class="texto-tres-section">
-    <p>
-      Me encanta equivocarme y aprender del tropiezo, las canciones de Rosalía,
-      y esas charlas con amigos que siempre acaban siendo una lluvia de
-      insights, Porque, al final, <strong
-        >no sé estar quieta, pero sé contar todo lo que me agita.</strong
-      >
-    </p>
-  </section>
-
-  <div class="video-section">
-    <video controls poster="/fotos/sobremi/miniatura_video.png">
-      <source src="video/videoporfolio.MOV" type="video/mp4" />
-      Tu navegador no soporta el video.
-    </video>
-  </div>
+  <VideoPresentacion />
 
   <SpotifyPlaylist />
 </div>

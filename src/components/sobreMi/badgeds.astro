@@ -1,13 +1,35 @@
+---
+const badgeds = [
+  {
+    name: "Mi Dupla",
+    url: "/midupla",
+    style: "badged",
+  },
+  {
+    name: "Dime Hola!",
+    url: "mailto:palberola12@gamil.com?subject=Hola&body=¡Hola!%20Quiero%20ponerme%20en%20contacto.",
+    style: "badged",
+    type: "mail",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/paulalberola/",
+    style: "badged",
+    type: "ig",
+  },
+];
+---
+
 <style>
   .badgeds {
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 32px;
+    flex-wrap: wrap; /* permite que los botones bajen de línea */
     font-family: system-ui, sans-serif;
   }
 
-  /* Botón píldora con borde */
   .badged {
     position: relative;
     display: inline-block;
@@ -16,47 +38,62 @@
     border-radius: 999px;
     color: red;
     text-decoration: none;
-    overflow: hidden;              /* oculta el pseudo-elemento */
-    transition: color .25s ease;   /* color del texto */
+    overflow: hidden;
+    transition: color 0.25s ease, transform 0.25s ease;
   }
 
-  /* Capa que “barre” el fondo desde la izquierda */
   .badged::before {
     content: "";
     position: absolute;
-    inset: 0;                      /* top/right/bottom/left: 0 */
+    inset: 0;
     background: red;
-    transform: translateX(-100%);  /* empieza fuera por la izquierda */
-    transition: transform .35s ease;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
     z-index: 0;
   }
 
-  /* Texto por encima de la capa */
   .badged > span {
     position: relative;
     z-index: 1;
     font-weight: 600;
+    white-space: nowrap; /* evita saltos de línea dentro del texto */
   }
 
-  /* Hover: el fondo entra y el texto se vuelve blanco */
   .badged:hover {
     color: #fff;
   }
+
   .badged:hover::before {
-    transform: translateX(0);      /* “wipe” hacia la derecha */
+    transform: translateX(0);
   }
 
-  /* Versión solo texto (como “Book a call”) */
-  .link-text {
-    font-weight: 500;
-    color: #000;
-    text-decoration: none;
-  }
-  .link-text:hover {
-    text-decoration: underline;
+  /* Responsive */
+  @media (max-width: 900px) {
+    .badgeds {
+      gap: 24px;
+      justify-content: center;
+    }
+    .badged {
+      padding: 10px 22px;
+      font-size: 0.95rem;
+    }
   }
 
-  /* Accesibilidad: sin animaciones si el usuario lo prefiere */
+  @media (max-width: 600px) {
+    .badgeds {
+      gap: 16px;
+      flex-direction: column; /* los botones se apilan */
+      align-items: center;
+    }
+    .badged {
+      width: 80%;
+      max-width: 250px;
+      text-align: center;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .badged::before,
     .badged,
@@ -66,12 +103,19 @@
   }
 </style>
 
-<div class="badgeds">
-  <a class="badged" href="mailto:palberola12@gamil.com?subject=Hola&body=¡Hola!%20Quiero%20ponerme%20en%20contacto.">
-    <span>Say Hello</span>
-  </a>
 
-  <a class="badged" target="_blank" href="https://www.instagram.com/paulalberola/">
-    <span>Instagram</span>
-  </a>
+<div class="badgeds">
+  {
+    badgeds.map((pill) => {
+      return (
+        <a
+          class={pill.style}
+          href={pill.url}
+          target={pill.type === "ig" ? "_blank" : undefined}
+        >
+          <span>{pill.name}</span>
+        </a>
+      );
+    })
+  }
 </div>
