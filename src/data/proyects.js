@@ -100,12 +100,10 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
     titulo_detalle: "Los Inapropiados",
     video_concept: [
       "/fotos/proyectos/milfshakes/videocase milfshakes.mp4",
-      "/fotos/proyectos/milfshakes/Video dupla.mp4",
     ],
     images: [
     ],
     poster: "/fotos/proyectos/milfshakes/milfshakes_portada.png",
-    poster2: "/fotos/proyectos/moodboard teka/9.png",
     subTitulos: ["Los Inapropiados", "Concurso Jóvenes Talentos IAB Spain x Milfshakes", "Dupla LADOBLEP", "2025"],
     description: [
       `Presentada en el certamen de <b>Jóvenes Talentos de IAB Spain 2025, “Los Inapropiados”</b> fue nuestra propuesta para una colaboración entre <b>Milfshakes y Chupa Chups</b>: En un mundo que exige perfección, nosotros quisimos celebrar a quienes se equivocan, meten la pata o sueltan lo que no toca… porque, al final, son ellos los que convierten lo incómodo en inolvidable. Así que en lugar de corregirlos, <b>decidimos contratarlos</b>.`,

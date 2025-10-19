@@ -29,7 +29,8 @@
       sans-serif;
     overflow: hidden;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
+    align-items: end;
   }
 
   .titulo-footer {
@@ -61,6 +62,25 @@
     font-size: clamp(1.5rem, 5vmin, 6rem);
     align-self: flex-center;
   }
+
+  footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    line-height: 1;
+    color: inherit;
+    white-space: nowrap;
+    margin-top: 4rem;
+  }
+
+  footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
 </style>
 
 <footer>
@@ -68,4 +88,5 @@
     <p class="name">Paula</p>
     <p class="marca-registrada">®</p>
   </div>
+  <p><a href="mailto:paulalberola.work@gmail.com">paulalberola.work@gmail.com</a></p>
 </footer>

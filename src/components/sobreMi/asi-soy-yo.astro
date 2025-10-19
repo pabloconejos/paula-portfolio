@@ -9,14 +9,15 @@
 
   .asi-soy-section {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: end;
     margin-top: 300px;
+    gap: 100px;
     margin-bottom: 130px;
   }
 
   .img-section {
-    width: 500px;
+    width: 700px;
     animation: reveal linear both;
     animation-timeline: view();
     animation-range: entry 20% cover 30%;
@@ -50,6 +51,26 @@
   }
 
 
+  .texto-final-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+    margin-bottom: 100px;
+  }
+
+  .texto-final-section p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+    font-size: 1.4rem;
+    max-width: 1000px;
+    text-align: center;
+    margin: 0;
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+
   @keyframes reveal {
     from {
       opacity: 0;
@@ -79,4 +100,11 @@
       <strong>cercana, humana y revolucionaria.</strong>
     </p>
   </section>
+</div>
+
+<div class="texto-final-section">
+  <p>
+    Me encanta equivocarme y aprender del tropiezo, las canciones de Rosalía, y esas charlas con amigos que siempre acaban siendo una lluvia de insights, 
+    Porque, al final, <strong>no sé estar quieta, pero sé contar todo lo que me agita.</strong>
+  </p>
 </div>

@@ -1,22 +1,98 @@
 ---
-import Manifiesto from "../components/manifiesto/manifiesto";
-import PortadaSwitcher from "../components/portada/PortadaSwitcher";
 import Layout from "../layouts/Layout.astro";
-import Proyectos from "../components/proyectos.astro";
 
-
-// src/pages/index.astro
-// import Manifiesto from "../components/manifiesto.astro";
 
 ---
 
-
 <style>
-  h1 {
-    font-family: "BricolageGrotesque", sans-serif;
+
+  .contenedor {
+    margin: 60px 30px 300px 30px;
   }
+
+  /* --- Responsive "sobre-mi" --- */
+  .sobre-mi {
+    display: flex;
+    gap: 400px;
+    align-items: flex-start;
+  }
+
+  .img-column {
+    text-align: center;
+  }
+
+  /* Opcional: que cada columna pueda contraerse sin romper */
+  .text-column,
+  .img-column {
+    flex: 1 1 380px; /* crece, encoge, base */
+  }
+
+
+  .img-column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+    gap: 20px;
+  }
+
+  .text-column {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .text-column h1 {
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: 7rem;
+    letter-spacing: -1px;
+    line-height: 0;
+  }
+
+  .text-column p {
+    font-size: 1.4rem;
+    text-align: justify;
+  }
+
+  .img-column video {
+    width: 100%;
+    max-width: 1000px; /* ajusta el tamaño máximo según tu gusto */
+    aspect-ratio: 16 / 9; /* mantiene proporciones consistentes */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 900px) {
+    .sobre-mi {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+
 </style>
 
 <Layout>
-  <h1>Mi Dupla</h1>
+  <div class="contenedor">
+    <div class="sobre-mi">
+      <div class="text-column">
+        <h1>MI DUPLA</h1>
+        <p>
+          Paula y yo, dos personas que comparten un amor por la música, la cultura y la vida en general.
+        </p>
+        
+      </div>
+
+      <div class="img-column">
+        <video controls poster="/fotos/proyectos/moodboard teka/9.png">
+          <source src="/fotos/proyectos/milfshakes/Video dupla.mp4" type="video/mp4" />
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+    </div>
+  </div>
 </Layout>
+

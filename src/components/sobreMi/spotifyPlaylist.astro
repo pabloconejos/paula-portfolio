@@ -2,10 +2,9 @@
 export interface PlaylistItem {
   id?: string | number;
   image: string;
-  month: string;
-  year: string | number;
-  name: string;
+  title: string;
   subtitle?: string;
+  url?: string;
 }
 
 interface Props {
@@ -14,10 +13,10 @@ interface Props {
 }
 
 const demoItems: PlaylistItem[] = [
-  { image: "/fotos/playlist/prueba.jpeg", month: "September", year: 2025, name: "I Remember To Forget" },
-  { image: "/fotos/playlist/prueba.jpeg", month: "August",    year: 2025, name: "Be Careful With Your Dreams" },
-  { image: "/fotos/playlist/prueba.jpeg", month: "July",      year: 2025, name: "Sugar High Now" },
-  { image: "/fotos/playlist/prueba.jpeg", month: "June",      year: 2025, name: "Wild Heart" },
+  { image: "/fotos/playlist/im_just_girl.webp", title: "I´m just a girl", url: 'https://open.spotify.com/playlist/2if96pgxsWJgykCuHJWTj6?si=-RS_PrKoSbC_o7runFD1pw' },
+  { image: "/fotos/playlist/hiperactividad.webp", title: "Hiperactividad at 3am", url: 'https://open.spotify.com/playlist/7pecJTdziOufoNzRyYhWEc?si=1G66PvqxQiOzcBF_1rf3fQ' },
+  { image: "/fotos/playlist/mananas_bonitas.webp", title: "Mañanas bonitas", url: 'https://open.spotify.com/playlist/3cqPoSdvLN2oli9kTtuCoF?si=ZdfKkLwnQ42iSuLvJPZqCA' },
+  { image: "/fotos/playlist/afterwork.jpeg", title: "After work", url: 'https://open.spotify.com/playlist/3fRCs0ixf1Fvt6pI1fjY5Z?si=HPqwma7cTmmVI8y0fJOoEQ' },
 ];
 
 const { title = "Mis playlists favoritas :)", items = demoItems } = Astro.props as Props;
@@ -119,6 +118,11 @@ const { title = "Mis playlists favoritas :)", items = demoItems } = Astro.props 
   @container (min-width: 900px) {
     .playlist-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   
 </style>
 
@@ -128,21 +132,22 @@ const { title = "Mis playlists favoritas :)", items = demoItems } = Astro.props 
   {items?.length ? (
     <div class="playlist-grid" role="list">
       {items.map((p) => (
-        <article class="playlist-card" role="listitem" aria-label={`${p.month} ${p.year} – ${p.name}`}>
+        <a href={p.url} target="_blank" rel="noopener noreferrer">
+        <article class="playlist-card" role="listitem" aria-label={`${p.title}`}>
           <img
             src={p.image}
-            alt={p.name ?? `${p.month} ${p.year}`}
+            alt={p.title}
             class="playlist-img"
             loading="lazy"
             decoding="async"
             sizes="(max-width: 480px) 90vw, (max-width: 900px) 45vw, 240px"
           />
           <div class="playlist-info">
-            <h3>{p.month} {p.year}</h3>
-            <p>{p.name}</p>
+            <h3>{p.title}</h3>
             {p.subtitle && <p class="subtitle">{p.subtitle}</p>}
           </div>
         </article>
+        </a>
       ))}
     </div>
   ) : (
