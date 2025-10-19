@@ -11,8 +11,8 @@ export const projects = [
     ],
     subTitulos: ["1º Premio Creatividad en Vivo", "Universidad Jaume I x McCann España", "2025"],
     video_concept: [
-      "/fotos/proyectos/IBERIA/IBERIA.MOV",
-      "/fotos/proyectos/IBERIA/Iberia x brava agency.mp4",
+      "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/IBERIA.MOV",
+      "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/Iberia+x+brava+agency.mp4",
     ],
     poster: "/fotos/proyectos/IBERIA/iberia_portada.png",
     poster2: "/fotos/proyectos/IBERIA/portada2.jpg",
