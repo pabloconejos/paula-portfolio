@@ -87,13 +87,31 @@ const nextProject = projects[index + 1] ?? null;
     animation: fadeInUp 1s ease forwards;
   }
 
-  .video-section {
+  .video-section video,
+  .image-gallery img {
+    width: 100%;
+    max-width: 1000px; /* ajusta el tamaño máximo según tu gusto */
+    aspect-ratio: 16 / 9; /* mantiene proporciones consistentes */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .video-section,
+  .image-gallery {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     transform: translateY(20px);
     animation: fadeInUp 1s ease forwards;
+    gap: 20px;
+  }
+
+  .image-gallery {
+    padding-bottom: 60px;
   }
 
   video {
@@ -109,25 +127,12 @@ const nextProject = projects[index + 1] ?? null;
     transform: translateY(20px);
     animation: fadeInUp 1s ease forwards;
   }
-
-  /* @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  } */
-
-  
 </style>
 
 <!-- transition:animate="slide" -->
 
 <Layout>
-  <section >
+  <section>
     <div class="info">
       <div class="info-section">
         <div class="titulo">
@@ -141,12 +146,16 @@ const nextProject = projects[index + 1] ?? null;
         </div>
       </div>
 
-      <div class="video-section">
+      <div transition:name={project.id} class="video-section">
         <video controls poster={images[0]}>
-          <source src={video_concept} type="video/mp4" />
+          <source src={video_concept[0]} type="video/mp4" />
           Tu navegador no soporta el video.
         </video>
       </div>
+    </div>
+
+    <div class="image-gallery">
+      {images.map((image) => <img src={image} alt="" />)}
     </div>
 
     <nav>

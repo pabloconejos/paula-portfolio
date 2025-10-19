@@ -1,53 +1,57 @@
 ---
-const proyects = [
-  {
-    id: "iberia",
-    title: "Viajeros del mundo",
-    subtitle: "Iberia",
-    description: "Descripción del proyecto 1",
-    imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-    link: "/fotos/portada/1.jpeg",
-  },
-  {
-    id: "moeve",
-    title: "Gen Moeve",
-    subtitle: "Moeve",
-    description: "Descripción del proyecto 2",
-    imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-    link: "/fotos/portada/2.jpeg",
-  },
-  {
-    id: "papajhons",
-    title: "Dame una pizta, papá",
-    subtitle: "Papa Jhons",
-    description: "Descripción del proyecto 3",
-    imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-    link: "/fotos/portada/3.jpeg",
-  },
-  {
-    id: "setmestre",
-    title: "Set Mestre",
-    subtitle: "Teka",
-    description: "Descripción del proyecto 3",
-    imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-    link: "/fotos/portada/3.jpeg",
-  },
-  {
-    id: "proyecto-5",
-    title: "Proyecto-5",
-    subtitle: "Proyecto-5",
-    description: "Descripción del proyecto 3",
-    imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-    link: "/fotos/portada/3.jpeg",
-  },
-  {
-    id: "proyecto-6",
-    title: "Proyecto-6",
-    description: "Descripción del proyecto 3",
-    imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
-    link: "/fotos/portada/3.jpeg",
-  },
-];
+// const proyects = [
+//   {
+//     id: "iberia",
+//     title: "Viajeros del mundo",
+//     subtitle: "Iberia",
+//     description: "Descripción del proyecto 1",
+//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
+//     link: "/fotos/portada/1.jpeg",
+//   },
+//   {
+//     id: "moeve",
+//     title: "Gen Moeve",
+//     subtitle: "Moeve",
+//     description: "Descripción del proyecto 2",
+//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
+//     link: "/fotos/portada/2.jpeg",
+//   },
+//   {
+//     id: "papajhons",
+//     title: "Dame una pizta, papá",
+//     subtitle: "Papa Jhons",
+//     description: "Descripción del proyecto 3",
+//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
+//     link: "/fotos/portada/3.jpeg",
+//   },
+//   {
+//     id: "setmestre",
+//     title: "Set Mestre",
+//     subtitle: "Teka",
+//     description: "Descripción del proyecto 3",
+//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
+//     link: "/fotos/portada/3.jpeg",
+//   },
+//   {
+//     id: "proyecto-5",
+//     title: "Proyecto-5",
+//     subtitle: "Proyecto-5",
+//     description: "Descripción del proyecto 3",
+//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
+//     link: "/fotos/portada/3.jpeg",
+//   },
+//   {
+//     id: "proyecto-6",
+//     title: "Proyecto-6",
+//     description: "Descripción del proyecto 3",
+//     imageUrl: "/fotos/proyectos/proyectos_foto_prueba.jpeg",
+//     link: "/fotos/portada/3.jpeg",
+//   },
+// ];
+
+import { projects } from "../data/proyects.js";
+
+const proyects = projects;
 ---
 
 <style>
@@ -70,12 +74,11 @@ const proyects = [
   .proyectos {
     background-color: white;
     margin: 50px 10px 150px 10px;
-    
   }
 
   .proyectos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Máximo tres columnas */
     gap: 10px;
   }
 
@@ -94,7 +97,7 @@ const proyects = [
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 5px;    
+    border-radius: 5px;
   }
 
   @keyframes reveal {
@@ -155,8 +158,18 @@ const proyects = [
     opacity: 1;
   }
 
+  @media (max-width: 900px) {
+    .proyectos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-
+  /* En pantallas pequeñas (móviles) una sola columna */
+  @media (max-width: 600px) {
+    .proyectos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <section class="proyectos">
@@ -164,12 +177,18 @@ const proyects = [
   <div class="proyectos-grid">
     {
       proyects.map((proyecto) => (
-        <article class="proyecto-card">
+        <article 
+        transition:name={proyecto.id}
+        class="proyecto-card">
           <a href={`projects/${proyecto.id}`}>
-            <img class="proyecto-img" src={proyecto.imageUrl} alt={`Imagen de ${proyecto.title}`} />
+            <img
+              class="proyecto-img"
+              src={proyecto.images[0]}
+              alt={`Imagen de ${proyecto.title}`}
+            />
             <div class="overlay">
               <p class="title">{proyecto.title}</p>
-              <p class="subTitle">{proyecto.subtitle}</p>
+              <p class="subTitle">{proyecto.subTitulos[0]}</p>
             </div>
           </a>
         </article>
@@ -177,4 +196,3 @@ const proyects = [
     }
   </div>
 </section>
-
