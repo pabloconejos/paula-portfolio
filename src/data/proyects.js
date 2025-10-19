@@ -99,7 +99,7 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
     title: "MILFSHAKES",
     titulo_detalle: "Los Inapropiados",
     video_concept: [
-      "/fotos/proyectos/milfshakes/videocasemilfshakes.mp4",
+      "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/videocasemilfshakes.mp4",
     ],
     images: [
     ],
