@@ -45,7 +45,7 @@ export const projects = [
       '/fotos/proyectos/moeve/20.png',
       '/fotos/proyectos/moeve/22.png',
     ],
-    video_concept: ["/fotos/proyectos/moeve/VIDEOCONCEPT MOEVE 2.MP4"],
+    video_concept: ["https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/VIDEOCONCEPT+MOEVE+2.MP4"],
     poster: "/fotos/proyectos/moeve/moeve_portada.png",
     description: [
       `GenMoeve fue la <b>estrategia ganadora de los Premios Eficacia Universidades 2025 para Moeve</b>. Como valencianos, tras vivir la DANA, pensamos: qué pena que haga falta una desgracia para que se den cuenta de lo valientes que somos. De esa reflexión nació una estrategia que pone a los jóvenes al mando del cambio a partir del nacimiento de oportunidades, y no de desgracias.`,
@@ -66,7 +66,7 @@ export const projects = [
     title: "PAPA JOHN'S",
     titulo_detalle: "Dame una pizta, papá",
     video_concept: [
-      "/fotos/proyectos/PAPA JOHNS/papaJhons_video_concept.MOV",
+      "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/papaJhons_video_concept.MOV",
     ],
     poster: "/fotos/proyectos/PAPA JOHNS/1.png",
     images: [
