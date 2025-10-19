@@ -41,7 +41,6 @@ export const projects = [
       '/fotos/proyectos/moeve/6.png',
       '/fotos/proyectos/moeve/7.png',
       '/fotos/proyectos/moeve/9.png',
-      '/fotos/proyectos/moeve/19.png',
       '/fotos/proyectos/moeve/20.png',
       '/fotos/proyectos/moeve/22.png',
     ],
