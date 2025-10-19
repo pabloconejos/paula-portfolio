@@ -11,8 +11,8 @@ export const projects = [
     ],
     subTitulos: ["1º Premio Creatividad en Vivo", "Universidad Jaume I x McCann España", "2025"],
     video_concept: [
-      "public/fotos/proyectos/IBERIA/IBERIA.MOV",
-      "public/fotos/proyectos/IBERIA/Iberia x brava agency.mp4",
+      "/fotos/proyectos/IBERIA/IBERIA.MOV",
+      "/fotos/proyectos/IBERIA/Iberia x brava agency.mp4",
     ],
     poster: "/fotos/proyectos/IBERIA/iberia_portada.png",
     poster2: "/fotos/proyectos/IBERIA/portada2.jpg",
@@ -45,7 +45,7 @@ export const projects = [
       '/fotos/proyectos/moeve/20.png',
       '/fotos/proyectos/moeve/22.png',
     ],
-    video_concept: ["public/fotos/proyectos/moeve/VIDEOCONCEPT MOEVE 2.MP4"],
+    video_concept: ["/fotos/proyectos/moeve/VIDEOCONCEPT MOEVE 2.MP4"],
     poster: "/fotos/proyectos/moeve/moeve_portada.png",
     description: [
       `GenMoeve fue la <b>estrategia ganadora de los Premios Eficacia Universidades 2025 para Moeve</b>. Como valencianos, tras vivir la DANA, pensamos: qué pena que haga falta una desgracia para que se den cuenta de lo valientes que somos. De esa reflexión nació una estrategia que pone a los jóvenes al mando del cambio a partir del nacimiento de oportunidades, y no de desgracias.`,
@@ -66,7 +66,7 @@ export const projects = [
     title: "PAPA JOHN'S",
     titulo_detalle: "Dame una pizta, papá",
     video_concept: [
-      "public/fotos/proyectos/PAPA JOHNS/papaJhons_video_concept.MOV",
+      "/fotos/proyectos/PAPA JOHNS/papaJhons_video_concept.MOV",
     ],
     poster: "/fotos/proyectos/PAPA JOHNS/1.png",
     images: [
@@ -99,7 +99,7 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
     title: "MILFSHAKES",
     titulo_detalle: "Los Inapropiados",
     video_concept: [
-      "public/fotos/proyectos/milfshakes/videocase milfshakes.mp4",
+      "/fotos/proyectos/milfshakes/videocasemilfshakes.mp4",
     ],
     images: [
     ],
