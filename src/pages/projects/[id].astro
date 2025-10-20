@@ -81,7 +81,7 @@ const nextProject = projects[index + 1] ?? null;
   .info-section {
     display: flex;
     font-family: Helvetica, sans-serif;
-    gap: 350px;
+    gap: 150px;
     width: 100%;
   }
 
@@ -102,13 +102,14 @@ const nextProject = projects[index + 1] ?? null;
   .descripcion p {
     margin-top: 0;
     font-weight: 100;
+    text-align: justify;
   }
 
   .video-section video,
   .image-gallery img {
     width: 100%;
     max-width: 1000px; /* ajusta el tamaño máximo según tu gusto */
-    aspect-ratio: 16 / 9; /* mantiene proporciones consistentes */
+    /*aspect-ratio: 16 / 9;  mantiene proporciones consistentes */
     object-fit: cover;
     border-radius: 10px;
     margin: 20px 0;
@@ -243,13 +244,14 @@ const nextProject = projects[index + 1] ?? null;
         </div>
       </div>
 
-      <!-- <p>{video_concept[0]}</p> -->
-      <div transition:name={project.id} class="video-section">
-        <video controls preload="metadata" playsinline  poster={poster}>
-          <source src={video_concept[0]} type="video/mp4" />
-          Tu navegador no soporta el video.
-        </video>
-      </div>
+      {video_concept[0] != null ? (
+        <div transition:name={project.id} class="video-section">
+          <video controls preload="metadata" playsinline  poster={poster}>
+            <source src={video_concept[0]} type="video/mp4" />
+            Tu navegador no soporta el video.
+          </video>
+        </div>
+      ) : null}
 
       <div class="image-gallery">
         {images.map((image) => <img class="proyecto-img" src={image} alt="" />)}

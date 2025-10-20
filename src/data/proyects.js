@@ -103,7 +103,7 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
     images: [
     ],
     poster: "/fotos/proyectos/milfshakes/milfshakes_portada.png",
-    subTitulos: ["Los Inapropiados", "Concurso Jóvenes Talentos IAB Spain x Milfshakes", "Dupla LADOBLEP", "2025"],
+    subTitulos: ["Concurso Jóvenes Talentos IAB Spain x Milfshakes", "Dupla LADOBLEP", "2025"],
     description: [
       `Presentada en el certamen de <b>Jóvenes Talentos de IAB Spain 2025, “Los Inapropiados”</b> fue nuestra propuesta para una colaboración entre <b>Milfshakes y Chupa Chups</b>: En un mundo que exige perfección, nosotros quisimos celebrar a quienes se equivocan, meten la pata o sueltan lo que no toca… porque, al final, son ellos los que convierten lo incómodo en inolvidable. Así que en lugar de corregirlos, <b>decidimos contratarlos</b>.`,
       `La acción arrancaba con un falso combate en el centro de Madrid. Desde ahí, la campaña se desplegaba con un drop misterioso, máquinas expendedoras escondidas por la ciudad y una dinámica digital que invitaba a demostrar lo inapropiado que uno podía llegar a ser.`,
@@ -121,7 +121,7 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
     title: "SET MESTRE",
     titulo_detalle: "SET MESTRE X Teka",
     video_concept: [
-      ""
+      
     ],
     images: [
       '/fotos/proyectos/moodboard teka/6.png',

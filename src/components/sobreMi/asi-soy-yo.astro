@@ -17,7 +17,7 @@
   }
 
   .img-section {
-    width: 700px;
+    max-width: 700px;
     animation: reveal linear both;
     animation-timeline: view();
     animation-range: entry 20% cover 30%;
@@ -71,6 +71,13 @@
     animation-range: entry 20% cover 30%;
   }
 
+  @media (max-width: 900px) {
+    .asi-soy-section {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   @keyframes reveal {
     from {
       opacity: 0;
@@ -93,7 +100,7 @@
   <section class="texto-section">
     <p>
       <strong>No sé quedarme quieta;</strong> siempre estoy pensando en proyectos,
-      ideas o formas distintas de exprimir mi creatividad. aunque estoy dando mis
+      ideas o formas distintas de exprimir mi creatividad. Aunque estoy dando mis
       primeros pasos en el mundo de la publicidad, he trabajado en otros sectores
       que me han enseñado a observar, comunicar y escuchar a las personas desde cerca.
       De ahí nace mi forma de entender la comunicación:

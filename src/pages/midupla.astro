@@ -1,17 +1,14 @@
 ---
-import BentoDupla from "../components/dupla/bento-dupla.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <style>
-  :root{
-    /* ancho máximo legible para el bloque de texto */
+  :root {
     --content-max: 800px;
   }
 
   .contenedor {
-    /* márgenes fluidos y respetando notch */
-    margin: clamp(24px, 6vw, 60px) clamp(16px, 4vw, 30px) clamp(120px, 12vw, 300px);
+    margin: 60px 30px 300px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,35 +21,25 @@ import Layout from "../layouts/Layout.astro";
     color: red;
     font-family: Helvetica, Arial, sans-serif;
     max-width: var(--content-max);
-    padding-inline: clamp(8px, 2vw, 16px);
+    padding-inline: clamp(1rem, 4vw, 2rem);
     text-wrap: pretty;
   }
 
-  /* TÍTULO: escala fluida y espaciado que se relaja en pantallas pequeñas */
   .sobre-mi h1 {
-    /* font-size: clamp(2.5rem, 12vw, 10rem); */
-    font-size: 15dvh;
-    letter-spacing: clamp(-4px, -1.2vw, -12px); /* menos negativo → más aire */
-    line-height: 1; /* más espacio entre las dos líneas */
-    text-align: center;
-    word-break: break-word;
-    white-space: pre-line; /* respeta salto manual */
+    font-family: "BricolageGrotesque", sans-serif;
+    font-size: clamp(2.5rem, 10vw, 11rem);
+    letter-spacing: clamp(-2px, -0.6vw, -8px);
+    color: red;
     margin: 0;
-  }
-
-
-  /* PÁRRAFOS: cuerpo de texto fluido y legible */
-  .sobre-mi p {
-    font-size: clamp(1rem, 1.2vw + 0.6rem, 1.25rem);
-    line-height: 1.6;
+    line-height: 0.9;
     text-align: center;
-    font-weight: 500;
-    max-width: 60ch; /* óptimo para lectura */
-    line-height: 1.2;
   }
 
-  .sobre-mi p:last-child {
-    font-style: italic;
+  .sobre-mi p {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    text-align: center;
+    margin: 10px 0;
+    line-height: 1.5;
   }
 
   .img-column {
@@ -70,41 +57,17 @@ import Layout from "../layouts/Layout.astro";
     margin: 20px 0;
   }
 
-  /* Ajustes por breakpoints */
-  @media (max-width: 900px) {
-    .sobre-mi {
-      padding-inline: clamp(12px, 4vw, 24px);
-    }
-    .sobre-mi h1 {
-      /* reduce el espaciado negativo para que no “rompa” en tablets */
-      letter-spacing: clamp(-4px, -1.2vw, -10px);
-    }
-  }
-
+  /* Ajustes mínimos para pantallas pequeñas */
   @media (max-width: 600px) {
     .contenedor {
       margin-bottom: clamp(80px, 18vw, 140px);
     }
-    .sobre-mi h1 {
-      line-height: 0.9;
-      /* suaviza aún más el kerning negativo */
-      letter-spacing: clamp(-2px, -0.8vw, -6px);
-    }
-    .sobre-mi p {
-      text-align: left;      /* lectura más natural en pantallas estrechas */
-      margin: 8px 0;
-    }
-  }
 
-  @media (max-width: 380px) {
-    .sobre-mi h1 {
-      /* evita desbordes en móviles muy pequeños */
-      font-size: clamp(2.2rem, 10vw, 3rem);
-      letter-spacing: -2px;
+    .sobre-mi p {
+      text-align: left;
     }
   }
 </style>
-
 
 <Layout>
   <div class="contenedor">
@@ -132,11 +95,14 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <div class="img-column">
-        <video controls poster="/fotos/proyectos/moodboard teka/9.png">
-          <source src="https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/Video+dupla.mp4" type="video/mp4" />
-          Tu navegador no soporta el video.
-        </video>
-      </div>
+      <video controls poster="/fotos/proyectos/moodboard teka/9.png">
+        <source
+          src="https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/Video+dupla.mp4"
+          type="video/mp4"
+        />
+        Tu navegador no soporta el video.
+      </video>
+    </div>
 
     <!-- <BentoDupla /> -->
   </div>
