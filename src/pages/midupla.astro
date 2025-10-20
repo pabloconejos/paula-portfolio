@@ -8,17 +8,18 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .contenedor {
-    margin: 60px 30px 300px 30px;
+    padding: 60px 30px 300px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: red;
   }
 
   .sobre-mi {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: red;
+    color: white;
     font-family: Helvetica, Arial, sans-serif;
     max-width: var(--content-max);
     padding-inline: clamp(1rem, 4vw, 2rem);
@@ -29,7 +30,7 @@ import Layout from "../layouts/Layout.astro";
     font-family: "BricolageGrotesque", sans-serif;
     font-size: clamp(2.5rem, 10vw, 11rem);
     letter-spacing: clamp(-2px, -0.6vw, -8px);
-    color: red;
+    color: withe;
     margin: 0;
     line-height: 0.9;
     text-align: center;
@@ -38,8 +39,8 @@ import Layout from "../layouts/Layout.astro";
   .sobre-mi p {
     font-size: clamp(1rem, 2vw, 1.4rem);
     text-align: center;
-    margin: 10px 0;
-    line-height: 1.5;
+    line-height: 1;
+    letter-spacing: 1px;
   }
 
   .img-column {
@@ -55,6 +56,7 @@ import Layout from "../layouts/Layout.astro";
     object-fit: cover;
     border-radius: 10px;
     margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   /* Ajustes mínimos para pantallas pequeñas */
