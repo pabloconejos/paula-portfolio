@@ -3,6 +3,7 @@ export const projects = [
   {
     id: "iberia",
     title: "IBERIA",
+    subTituloPanel: "Para los viajeros del mundo",
     titulo_detalle: "Para los viajeros del mundo",
     images: [
       '/fotos/proyectos/IBERIA/3.png',
@@ -32,6 +33,7 @@ export const projects = [
   {
     id: "moeve",
     title: "MOEVE",
+    subTituloPanel: "GenMoeve",
     titulo_detalle: "Gen Moeve X Moeve",
     subTitulos: ["1º Premio Eficacia Universidades", "Premios Eficacia", "2025"],
     images: [
@@ -63,6 +65,7 @@ export const projects = [
   {
     id: "papajhons",
     title: "PAPA JOHN'S",
+    subTituloPanel: "Dame una pizta, papá",
     titulo_detalle: "Dame una pizta, papá",
     video_concept: [
       "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/papaJhons_video_concept.MOV",
@@ -79,10 +82,9 @@ export const projects = [
     ],
     subTitulos: ["1º Premio Concurso de Talentos", "Papa John's x Rosebud", "Equipo BRAVA", "2024"],
     description: [
-      `Para celebrar la apertura de la tienda número 100 de Papa John’s en España, Brava Agency creó la campaña “Dame una pizta, papá”, dirigida al público joven y basada en el tono cercano y humorístico de la marca.
-La acción, de enfoque transmedia y gamificado, comenzó con un teaser viral en TikTok y continuó con una plataforma interactiva donde los usuarios podían votar la ubicación de la nueva tienda obteniendo pistas mediante sus compras.
-El proyecto culminó con un evento de inauguración con música, pizza y activaciones de marca.
-Desarrollada como un reto universitario, la campaña fue ganadora del concurso por su creatividad, su capacidad de generar participación y su conexión con los códigos culturales del público joven.`,
+      `Con motivo de la apertura de su tienda número 100 en España, desarrollamos “Dame una pizta, papá”, una campaña gamificada que combinaba humor, intriga y participación social.`,
+      `En lugar de anunciar la nueva apertura de forma tradicional, decidimos ocultarla en algún punto del mapa e invitar a los usuarios a descubrirla, dando inicio a la acción con la filtración de un vídeo que despertó la curiosidad del público.`,
+      `A partir de ese momento, Papa John’s lanzó un reto a nivel nacional: durante cinco días, los usuarios podían colocar una chincheta en un mapa interactivo para adivinar la ubicación de la tienda número 100. Las pistas —o mejor dicho, piztas— se escondían tanto en las cajas de pizza distribuidas por toda España como en las redes sociales de la marca.`
     ],
     link: "/project",
     video_concept_credits: "Videoconcept realizado por Paula Alberola Zaragozá",
@@ -96,6 +98,7 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
   {
     id: "milfshakes",
     title: "MILFSHAKES",
+    subTituloPanel: "Los Inapropiados",
     titulo_detalle: "Los Inapropiados",
     video_concept: [
       "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/videocasemilfshakes.mp4",
@@ -118,7 +121,8 @@ Desarrollada como un reto universitario, la campaña fue ganadora del concurso p
   },
   {
     id: "setmestre",
-    title: "SET MESTRE",
+    title: "TEKA",
+    subTituloPanel: "SET MESTRE",
     titulo_detalle: "SET MESTRE X Teka",
     video_concept: [
       
