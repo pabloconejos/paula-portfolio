@@ -84,7 +84,7 @@ export const projects = [
     description: [
       `Con motivo de la apertura de su tienda número 100 en España, desarrollamos “Dame una pizta, papá”, una campaña gamificada que combinaba humor, intriga y participación social.`,
       `En lugar de anunciar la nueva apertura de forma tradicional, decidimos ocultarla en algún punto del mapa e invitar a los usuarios a descubrirla, dando inicio a la acción con la filtración de un vídeo que despertó la curiosidad del público.`,
-      `A partir de ese momento, Papa John’s lanzó un reto a nivel nacional: durante cinco días, los usuarios podían colocar una chincheta en un mapa interactivo para adivinar la ubicación de la tienda número 100. Las pistas —o mejor dicho, piztas— se escondían tanto en las cajas de pizza distribuidas por toda España como en las redes sociales de la marca.`
+      `A partir de ese momento, Papa John’s lanzó un reto a nivel nacional: durante cinco días, los usuarios podían colocar una chincheta en un mapa interactivo para adivinar la ubicación de la tienda número 100. Las pistas (o mejor dicho, piztas) se escondían tanto en las cajas de pizza distribuidas por toda España como en las redes sociales de la marca.`
     ],
     link: "/project",
     video_concept_credits: "Videoconcept realizado por Paula Alberola Zaragozá",
@@ -123,15 +123,14 @@ export const projects = [
     id: "setmestre",
     title: "TEKA",
     subTituloPanel: "SET MESTRE",
-    titulo_detalle: "SET MESTRE X Teka",
+    titulo_detalle: "Brother Valencia X Teka",
     video_concept: [
       
     ],
     images: [
+      '/fotos/proyectos/moodboard teka/hecho.png',
       '/fotos/proyectos/moodboard teka/6.png',
       '/fotos/proyectos/moodboard teka/7.png',
-      '/fotos/proyectos/moodboard teka/9.png',
-      '/fotos/proyectos/moodboard teka/hecho.png',
     ],
     poster: "/fotos/proyectos/moodboard teka/set_mestre_portada.png",
     subTitulos: [
