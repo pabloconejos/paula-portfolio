@@ -32,7 +32,7 @@ export const projects = [
     id: "moeve",
     title: "MOEVE",
     subTituloPanel: "GenMoeve",
-    titulo_detalle: "Gen Moeve X Moeve",
+    titulo_detalle: "GenMoeve",
     subTitulos: ["1º Premio Eficacia Universidades", "Premios Eficacia", "2025"],
     images: [
       '/fotos/proyectos/moeve/3.png',
