@@ -235,9 +235,9 @@ const nextProject = projects[index + 1] ?? null;
         </div>
         <div class="descripcion desc-column">
           <p>{description.map((desc) => <p set:html={desc} />)}</p>
-          <div class="creditos">
+          <!-- <div class="creditos">
             {creditos!.map((cred) => <p set:html={cred} />)}
-          </div>
+          </div> -->
           {
             id === "milfshakes" || id === "setmestre" ? (
               <a class="badged" href={"/midupla"}>
