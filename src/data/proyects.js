@@ -143,6 +143,39 @@ export const projects = [
       "Un proyecto desarrollado por <b>LADOBLEP</b>:",
       "<b>Paula Alberola y Paula Abella Tello</b>",
     ]
+  },
+  {
+    id: "midjourney",
+    title: "FotografIA’s",
+    subTituloPanel: "Midjourney",
+    titulo_detalle: "Midjourney",
+    video_concept: [
+      
+    ],
+    images: [
+      "/fotos/proyectos/midjourney/1.jpeg",
+      "/fotos/proyectos/midjourney/2.jpeg",
+      "/fotos/proyectos/midjourney/3.jpeg",
+      "/fotos/proyectos/midjourney/4.jpeg",
+      "/fotos/proyectos/midjourney/5.jpeg",
+      "/fotos/proyectos/midjourney/6.jpeg",
+    ],
+    poster: "/fotos/proyectos/portadaIA.jpeg",
+    subTitulos: [
+      "FotografIA’s",
+      "Imagenes creadas con Midjourney",
+      "Paula Alberola",
+      "2025"
+    ],
+    description: [
+      `Este espacio es una ventana a mi lado más experimental: Me apasiona crear imágenes y explorar nuevas formas de expresión visual a través de la IA.`,
+      `Creo firmemente que la inteligencia artificial es una herramienta poderosa para potenciar la creatividad, combinar ideas que quizás nunca se te ocurrirían juntas y dar vida a universos visuales únicos. ¡Aquí comparto algunas de esas!`
+    ],
+    link: "/midjourney",
+    video_concept_credits: "",
+    creditos: [
+      ""
+    ]
   }
   // {
   //   id: "",
