@@ -154,7 +154,6 @@ export const projects = [
     ],
     images: [
       "/fotos/proyectos/midjourney/1.jpeg",
-      "/fotos/proyectos/midjourney/2.jpeg",
       "/fotos/proyectos/midjourney/3.jpeg",
       "/fotos/proyectos/midjourney/4.jpeg",
       "/fotos/proyectos/midjourney/5.jpeg",
