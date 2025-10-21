@@ -2,6 +2,11 @@
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+
+const title = "Paula Alberola Zaragoza";
+const description = "Siempre he pensado que las ideas buenas necesitan <span>paz</span> para coger forma y <span>caos</span> para cobrar vida"
+const url = "https://paulalberola.work";
+const image = `${url}/fotos/portada/1.jpg`;
 ---
 
 <!doctype html>
@@ -11,7 +16,37 @@ import Footer from "../components/footer.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/paula.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Paula Alberola</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={url} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Tema del navegador -->
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph (para Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:creator" content="@pabloconejos" />
+
+    <!-- Autor -->
+    <meta name="author" content="Pablo Conejos" />
     <ClientRouter />
   </head>
   <body>
