@@ -25,9 +25,7 @@ export const projects = [
     video_concept_credits: "Videoconcept realizado por Paula Alberola Zaragozá",
     creditos: [
       "Un proyecto desarrollado por <b>BRAVA</b>:",
-      "<b>Dirección de Arte:</b> Paula Alberola y Paula Abella Tello",
-      "<b>Investigación:</b> Ignacio Cervera Rodrigo y Marta Bueno Montalt",
-      "<b>Planning:</b> Beatriz Baena Martínez",
+      "Paula Abella Tello, Ignacio Cervera Rodrigo, Marta Bueno Montalt, Beatriz Baena Martínez y Paula Alberola Zaragozá."
     ]
   },
   {
@@ -57,9 +55,7 @@ export const projects = [
     video_concept_credits: "Videoconcept realizado por Paula Alberola Zaragozá",
     creditos: [
       "Un proyecto creado por <b>BRAVA</b>:",
-      "<b>Dirección de Arte:</b> Paula Alberola y Paula Abella Tello",
-      "<b>Investigación:</b> Ignacio Cervera Rodrigo y Marta Bueno Montalt",
-      "<b>Planning:</b> Beatriz Baena Martínez",
+      "Paula Abella Tello, Ignacio Cervera Rodrigo, Marta Bueno Montalt, Beatriz Baena Martínez y Paula Alberola Zaragozá."
     ]
   },
   {
@@ -90,9 +86,7 @@ export const projects = [
     video_concept_credits: "Videoconcept realizado por Paula Alberola Zaragozá",
     creditos: [
       "Un proyecto desarrollado por <b>BRAVA</b>:",
-      "<b>Dirección de Arte:</b> Paula Alberola y Paula Abella Tello",
-      "<b>Investigación:</b> Ignacio Cervera Rodrigo y Marta Bueno Montalt",
-      "<b>Planning:</b> Beatriz Baena Martínez",
+      "Paula Abella Tello, Ignacio Cervera Rodrigo, Marta Bueno Montalt, Beatriz Baena Martínez y Paula Alberola Zaragozá."
     ]
   },
   {
