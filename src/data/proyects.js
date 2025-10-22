@@ -153,10 +153,10 @@ export const projects = [
       "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/video_concept_nenuco.MOV"
     ],
     images: [
-      '/fotos/proyectos/nenuco/1.jpg',
       '/fotos/proyectos/nenuco/3.PNG',
       '/fotos/proyectos/nenuco/5.PNG',
       '/fotos/proyectos/nenuco/6.PNG',
+      '/fotos/proyectos/nenuco/1.jpg',
       '/fotos/proyectos/nenuco/4.PNG',
     ],
     poster: "/fotos/proyectos/nenuco/poster.jpeg",
