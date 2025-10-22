@@ -156,7 +156,6 @@ export const projects = [
       '/fotos/proyectos/nenuco/3.PNG',
       '/fotos/proyectos/nenuco/5.PNG',
       '/fotos/proyectos/nenuco/6.PNG',
-      '/fotos/proyectos/nenuco/1.jpg',
       '/fotos/proyectos/nenuco/4.PNG',
     ],
     poster: "/fotos/proyectos/nenuco/poster.jpeg",
