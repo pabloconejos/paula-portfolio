@@ -154,12 +154,10 @@ export const projects = [
     ],
     images: [
       '/fotos/proyectos/nenuco/1.jpg',
-      '/fotos/proyectos/nenuco/2.jpg',
       '/fotos/proyectos/nenuco/3.PNG',
-      '/fotos/proyectos/nenuco/4.PNG',
       '/fotos/proyectos/nenuco/5.PNG',
       '/fotos/proyectos/nenuco/6.PNG',
-      
+      '/fotos/proyectos/nenuco/4.PNG',
     ],
     poster: "/fotos/proyectos/nenuco/poster.jpeg",
     subTitulos: [
@@ -168,7 +166,7 @@ export const projects = [
       "2025"
     ],
     description: [
-      `Hace unos meses diseñé la nueva identidad visual de Nenuco, una marca que siempre me ha fascinado, la he usado desde pequeña y mi abuela sigue rociándose con ella, así que forma parte de mi vida desde siempre. Por eso pensé que sería bonito adaptarla a los nuevos tiempos, hacerle un pequeño rebranding que mantuviera su esencia pero con una imagen más más cercana a cómo la sentimos hoy.`
+      `Hace unos meses diseñé la nueva identidad visual de Nenuco, una marca que siempre me ha fascinado, la he usado desde pequeña y mi abuela sigue rociándose con ella, así que forma parte de mi vida desde siempre. Por eso pensé que sería bonito adaptarla a los nuevos tiempos, hacerle un rebranding que mantuviera su esencia pero con una imagen más más cercana a cómo la sentimos hoy.`
     ],
     link: "/nenuco",
     video_concept_credits: "",
