@@ -145,6 +145,38 @@ export const projects = [
     ]
   },
   {
+    id: "nenuco",
+    title: "Nenuco",
+    subTituloPanel: "Diseño de identidad visual",
+    titulo_detalle: "Nenuco",
+    video_concept: [
+      "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/video_concept_nenuco.MOV"
+    ],
+    images: [
+      '/fotos/proyectos/nenuco/1.jpg',
+      '/fotos/proyectos/nenuco/2.jpg',
+      '/fotos/proyectos/nenuco/3.PNG',
+      '/fotos/proyectos/nenuco/4.PNG',
+      '/fotos/proyectos/nenuco/5.PNG',
+      '/fotos/proyectos/nenuco/6.PNG',
+      
+    ],
+    poster: "/fotos/proyectos/nenuco/poster.jpeg",
+    subTitulos: [
+      "Diseño de identidad visual",
+      "Paula Alberola Zaragozá",
+      "2025"
+    ],
+    description: [
+      `Hace unos meses diseñé la nueva identidad visual de Nenuco, una marca que siempre me ha fascinado, la he usado desde pequeña y mi abuela sigue rociándose con ella, así que forma parte de mi vida desde siempre. Por eso pensé que sería bonito adaptarla a los nuevos tiempos, hacerle un pequeño rebranding que mantuviera su esencia pero con una imagen más más cercana a cómo la sentimos hoy.`
+    ],
+    link: "/nenuco",
+    video_concept_credits: "",
+    creditos: [
+      ""
+    ]
+  },
+  {
     id: "midjourney",
     title: "FotografIA’s",
     subTituloPanel: "Midjourney",
@@ -176,14 +208,4 @@ export const projects = [
       ""
     ]
   }
-  // {
-  //   id: "",
-  //   title: "",
-  //   video_concept: [],
-  //   images: [],
-  //   subTitulos: [],
-  //   description: [],
-  //   link: "",
-  //   video_concept_credits: "",
-  // }
 ];
