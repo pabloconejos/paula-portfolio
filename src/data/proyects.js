@@ -191,7 +191,7 @@ export const projects = [
     poster: "/fotos/proyectos/portadaIA.jpeg",
     subTitulos: [
       "FotografIA’s",
-      "Imagenes creadas con Midjourney",
+      "Imágenes creadas con Midjourney",
       "Paula Alberola",
       "2025"
     ],
