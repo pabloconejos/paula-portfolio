@@ -7,7 +7,7 @@ export default function PortadaVertical() {
     
     <div className='portadaVertical'>
       <p className="titulo-vertical">Paula</p>
-      {/* <p className="subtitulo-vertical">Alberola Zaragoza</p> */}
+      {/* <p className="subtitulo-vertical">Alberola Zaragozá</p> */}
     </div>
   );
 }
