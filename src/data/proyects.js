@@ -187,6 +187,7 @@ export const projects = [
       "/fotos/proyectos/midjourney/4.jpeg",
       "/fotos/proyectos/midjourney/5.jpeg",
       "/fotos/proyectos/midjourney/6.jpeg",
+      "/fotos/proyectos/midjourney/Foto_midjourney_lux.JPEG",
     ],
     poster: "/fotos/proyectos/portadaIA.jpeg",
     subTitulos: [
