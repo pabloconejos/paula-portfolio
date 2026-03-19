@@ -21,10 +21,11 @@ import Layout from "../layouts/Layout.astro";
     flex-direction: column;
     align-items: center;
     color: white;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Helvetica, sans-serif;
     max-width: var(--content-max);
     padding-inline: clamp(1rem, 4vw, 2rem);
     text-wrap: pretty;
+    font-weight: 100;
   }
 
   .sobre-mi h1 {
@@ -41,7 +42,9 @@ import Layout from "../layouts/Layout.astro";
     font-size: clamp(1rem, 2vw, 1.4rem);
     text-align: center;
     line-height: 1;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
   }
 
   .img-column {
@@ -63,7 +66,7 @@ import Layout from "../layouts/Layout.astro";
   /* Ajustes mínimos para pantallas pequeñas */
   @media (max-width: 600px) {
     .contenedor {
-      margin-bottom: clamp(80px, 18vw, 140px);
+      /* margin-bottom: clamp(80px, 18vw, 140px); */
     }
 
     .sobre-mi p {
@@ -77,14 +80,18 @@ import Layout from "../layouts/Layout.astro";
     <div class="sobre-mi">
       <h1>LADOBLEP</h1>
       <p>
-        Somos Paula Abella Tello y Paula Alberola Zaragozá, dos creativas que hemos trabajado juntas como equipo en Brava, donde hemos 
-        combinado nuestras habilidades para desarrollar ideas frescas y potentes. Este año, hemos podido trabajar como dupla creativa, 
-        consiguiendo el primer premio en Brother Summer School de Valencia, con nuestra campaña para Teka. Además, recientemente 
-        participamos en Jóvenes Talentos de IAB Spain 2025, trabajando en una campaña para la marca Milfshakes.
+        Somos Paula Abella Tello y Paula Alberola Zaragozá, dos creativas que
+        hemos trabajado juntas como equipo en Brava, donde hemos combinado
+        nuestras habilidades para desarrollar ideas frescas y potentes. Este
+        año, hemos podido trabajar como dupla creativa, consiguiendo el primer
+        premio en Brother Summer School de Valencia, con nuestra campaña para
+        Teka. Además, recientemente participamos en Jóvenes Talentos de IAB
+        Spain 2025, trabajando en una campaña para la marca Milfshakes.
       </p>
       <p>
-        Nos llamamos igual, pensamos distinto y soñamos parecido, por eso nos llaman la doble P: dos creativas con un mismo 
-        pulso y dos maneras distintas de hacerlo latir. DobleP: doble potencial. Un 2x1 creativo.
+        Nos llamamos igual, pensamos distinto y soñamos parecido, por eso nos
+        llaman la doble P: dos creativas con un mismo pulso y dos maneras
+        distintas de hacerlo latir. DobleP: doble potencial. Un 2x1 creativo.
       </p>
 
       <!-- <p>

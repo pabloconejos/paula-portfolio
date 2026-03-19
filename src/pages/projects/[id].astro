@@ -219,24 +219,19 @@ const nextProject = projects[index + 1] ?? null;
     transform: translateX(0);
   }
 
-
-.image-gallery.midjourney {
- 
-}
-
-.image-gallery.midjourney img.proyecto-img {
-  max-width: 55%;
-}
-
-@media (max-width: 700px) {
-  .image-gallery.midjourney img.proyecto-img {
-    max-width: 100%;
+  .image-gallery.midjourney {
   }
-}
-  
 
+  .image-gallery.midjourney img.proyecto-img {
+    max-width: 55%;
+  }
+
+  @media (max-width: 700px) {
+    .image-gallery.midjourney img.proyecto-img {
+      max-width: 100%;
+    }
+  }
 </style>
-
 
 <Layout>
   <section>
@@ -254,7 +249,9 @@ const nextProject = projects[index + 1] ?? null;
             {creditos!.map((cred) => <p set:html={cred} />)}
           </div>
           {
-            id === "milfshakes" || id === "setmestre" ? (
+            id === "milfshakes" ||
+            id === "setmestre" ||
+            id === "absolut-sublime" ? (
               <a class="badged" href={"/midupla"}>
                 <span>Conoce a la DOBLEP</span>
               </a>
@@ -263,19 +260,23 @@ const nextProject = projects[index + 1] ?? null;
         </div>
       </div>
 
-      {video_concept[0] != null ? (
-        <div transition:name={project.id} class="video-section">
-          <video controls preload="metadata" playsinline  poster={poster}>
-            <source src={video_concept[0]} type="video/mp4" />
-            Tu navegador no soporta el video.
-          </video>
-        </div>
-      ) : null}
+      {
+        video_concept[0] != null ? (
+          <div transition:name={project.id} class="video-section">
+            <video controls preload="metadata" playsinline poster={poster}>
+              <source src={video_concept[0]} type="video/mp4" />
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+        ) : null
+      }
 
       {
         id != "midjourney" ? (
           <div class="image-gallery">
-            {images.map((image) => <img class="proyecto-img" src={image} alt="" />)}
+            {images.map((image) => (
+              <img class="proyecto-img" src={image} alt="" />
+            ))}
           </div>
         ) : null
       }
@@ -283,7 +284,9 @@ const nextProject = projects[index + 1] ?? null;
       {
         id == "midjourney" ? (
           <div class="image-gallery midjourney">
-            {images.map((image) => <img class="proyecto-img" src={image} alt="" />)}
+            {images.map((image) => (
+              <img class="proyecto-img" src={image} alt="" />
+            ))}
           </div>
         ) : null
       }
@@ -291,7 +294,7 @@ const nextProject = projects[index + 1] ?? null;
       {
         video_concept[1] != null ? (
           <div class="video-section">
-            <video controls preload="metadata" playsinline  poster={poster2}>
+            <video controls preload="metadata" playsinline poster={poster2}>
               <source src={video_concept[1]} type="video/mp4" />
               Tu navegador no soporta el video.
             </video>

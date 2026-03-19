@@ -1,6 +1,34 @@
 // src/data/projects.js
 export const projects = [
   {
+    id: "absolut-sublime",
+    title: "Absolut Vodka",
+    subTituloPanel: "Absolut Sublime",
+    titulo_detalle: "Absolut Sublime",
+    video_concept: [
+      "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/video_concept_absolut.mov"
+    ],
+    images: [
+      'https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/Absolut+Sublime+(1).jpg'
+    ],
+    poster: "https://escriba-bucket-s3.s3.eu-north-1.amazonaws.com/portada_sublime.jpg",
+    subTitulos: [
+      "Tour CdC",
+      "Absolut Vodka x Bakery Group",
+      "2026"
+    ],
+    description: [
+      `Actualmente, mi dupla creativa y yo nos encontramos en el Tour CdC 2026, donde desarrollamos este segundo briefing junto a la agencia Bakery Group Barcelona para Absolut Vodka.`,
+      `El briefing consistía en crear el universo creativo y la nueva temática de Absolut Manifiesto, por lo que partimos de un insight social para dar forma a la propuesta, de ahí nació Absolut Sublime.`
+    ],
+    link: "/project",
+    video_concept_credits: "",
+    creditos: [
+      "Un proyecto desarrollado por <b>LADOBLEP</b>:",
+      "<b>Paula Alberola y Paula Abella Tello</b>",
+    ]
+  },
+  {
     id: "iberia",
     title: "IBERIA",
     subTituloPanel: "Para los viajeros del mundo",
@@ -119,7 +147,7 @@ export const projects = [
     subTituloPanel: "SET MESTRE",
     titulo_detalle: "Brother Valencia X Teka",
     video_concept: [
-      
+
     ],
     images: [
       '/fotos/proyectos/moodboard teka/hecho.png',
@@ -179,7 +207,7 @@ export const projects = [
     subTituloPanel: "Midjourney",
     titulo_detalle: "Midjourney",
     video_concept: [
-      
+
     ],
     images: [
       "/fotos/proyectos/midjourney/1.jpeg",
