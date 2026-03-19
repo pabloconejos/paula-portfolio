@@ -25,7 +25,7 @@ export const projects = [
     video_concept_credits: "",
     creditos: [
       "Un proyecto desarrollado por <b>LADOBLEP</b>:",
-      "<b>Paula Alberola y Paula Abella Tello</b>",
+      "<b>Paula Abella Tello y Paula Alberola</b>",
     ]
   },
   {
@@ -138,7 +138,7 @@ export const projects = [
     video_concept_credits: "",
     creditos: [
       "Un proyecto desarrollado por <b>LADOBLEP</b>:",
-      "<b>Paula Alberola y Paula Abella Tello</b>",
+      "<b>Paula Abella Tello y Paula Alberola</b>",
     ]
   },
   {
@@ -169,7 +169,7 @@ export const projects = [
     video_concept_credits: "",
     creditos: [
       "Un proyecto desarrollado por <b>LADOBLEP</b>:",
-      "<b>Paula Alberola y Paula Abella Tello</b>",
+      "<b>Paula Abella Tello y Paula Alberola</b>",
     ]
   },
   {
